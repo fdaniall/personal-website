@@ -18,6 +18,10 @@
 }
 
 body {
-    background-color: black;
+    background-color: #282828;
     font-family: 'CalSans', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
