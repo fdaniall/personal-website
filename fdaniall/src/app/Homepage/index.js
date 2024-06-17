@@ -1,6 +1,6 @@
 import WelcomeText from "@/components/WelcomeText";
 import profile from "../../../public/styles/images/profile.jpg";
-import bgVid from "../../../public/styles/videos/snowflake.mp4";
+import bgVid from "../../../public/styles/videos/snowflake.webm";
 import Image from "next/image";
 
 const Homepage = () => {
