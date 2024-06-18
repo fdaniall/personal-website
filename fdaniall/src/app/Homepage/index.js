@@ -1,18 +1,19 @@
 import WelcomeText from "@/components/WelcomeText";
 import profile from "../../../public/styles/images/profile.jpg";
-import bgVid from "../../../public/styles/videos/snowflake.webm";
 import Image from "next/image";
 
 const Homepage = () => {
   return (
     <div className="h-screen flex flex-col">
-      <video
-        className="fixed top-0 left-0 w-full h-full object-cover z-[-1]"
-        src={bgVid}
-        autoPlay
-        loop
-        muted
-      />
+      <div className="video-container fixed top-0 left-0 w-full h-full z-[-1]">
+        <iframe
+          className="video-iframe w-full h-full"
+          src="https://player.vimeo.com/video/961238090?autoplay=1&muted=1&loop=1&background=1"
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+        ></iframe>
+      </div>
       <div className="flex-grow">
         <WelcomeText />
         <section
