@@ -5,15 +5,6 @@ import Image from "next/image";
 const Homepage = () => {
   return (
     <div className="h-screen flex flex-col">
-      <div className="video-container fixed top-0 left-0 w-full h-full z-[-1]">
-        <iframe
-          className="video-iframe w-full h-full"
-          src="https://player.vimeo.com/video/961238090?autoplay=1&muted=1&loop=1&background=1&playsinline=1"
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-        ></iframe>
-      </div>
       <div className="flex-grow">
         <WelcomeText />
         <section
