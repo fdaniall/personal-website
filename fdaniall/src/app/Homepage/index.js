@@ -1,5 +1,5 @@
 import WelcomeText from "@/components/WelcomeText";
-import profile from "../../../public/styles/images/profile.jpg";
+import profile from "../styles/images/profile.jpg";
 import Image from "next/image";
 
 const Homepage = () => {

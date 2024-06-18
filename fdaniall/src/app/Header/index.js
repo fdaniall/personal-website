@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import logo from "../../../public/styles/images/fdlogo.png";
+import logo from "../styles/images/fdlogo.png";
 
 const Header = () => {
   return (

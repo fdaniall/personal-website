@@ -4,12 +4,12 @@
 
 @font-face {
     font-family: 'CalSans';
-    src: url('../../public/styles/fonts/CalSans-SemiBold.ttf') format('truetype');
+    src: url('../app/styles/fonts/CalSans-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Montserrat';
-    src: url('../../public/styles/fonts/Montserrat-Regular.ttf') format('truetype');
+    src: url('../app/styles/fonts/Montserrat-Regular.ttf') format('truetype');
 }
 
 * {
