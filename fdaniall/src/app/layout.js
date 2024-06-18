@@ -2,8 +2,8 @@ import Header from "./Header";
 import "./globals.css";
 
 export const metadata = {
-  title: "Developer Page",
-  description: "Hello",
+  title: "Fakhri Danial",
+  description: "Personal Website of Fakhri Danial",
 };
 
 export default function RootLayout({ children }) {
