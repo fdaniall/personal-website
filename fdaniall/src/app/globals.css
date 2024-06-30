@@ -23,18 +23,8 @@ html {
 }
 
 body {
-    background-image: url('../app/styles/images/blackwallpaper.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
     font-family: 'CalSans', sans-serif;
-}
-
-@media (max-width: 600px) {
-    body {
-        background-image: url('../app/styles/images/blackwallpapermobile.jpg');
-        background-attachment: fixed;
-        background-size: cover;
-        background-position: center;
-    }
+    background-image: url(styles/gif/snowflake.gif);
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: overlay;
 }
