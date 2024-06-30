@@ -27,4 +27,7 @@ body {
     background-image: url(styles/gif/snowflake.gif);
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: overlay;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
 }
