@@ -24,10 +24,25 @@ html {
 
 body {
     font-family: 'CalSans', sans-serif;
+    overflow-x: hidden;
+}
+
+.background-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-image: url(styles/gif/snowflake.gif);
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: overlay;
-    background-attachment: fixed;
     background-size: cover;
     background-position: center;
+    z-index: -1;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
 }
