@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import WelcomeText from "@/components/WelcomeText";
 import profile from "../styles/images/profile.jpg";
 import Image from "next/image";
-import projectGif from "../styles/gif/yourinnovation.gif";
+import projectGif from "../styles/gif/yourinnovation2.gif";
 import projectStatic from "../styles/images/firstyourinnovationgif.png";
 import projectLogo from "../styles/images/yourinnovation.png";
 
