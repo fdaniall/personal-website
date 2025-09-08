@@ -7,41 +7,56 @@ import Image from "next/image";
 import projectGif from "../styles/gif/yourinnovation2.gif";
 import projectStatic from "../styles/images/firstyourinnovationgif.png";
 import projectLogo from "../styles/images/yourinnovation.png";
+import moneyhunterImg from "../styles/images/moneyhunter.png";
+import confideeImg from "../styles/images/confidee.png";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 
-const ProjectCard = ({ title, gif, staticImage, logo }) => {
+const ProjectCard = ({ title, gif, staticImage, logo, isPublic = false, url }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  return (
+  const CardContent = () => (
     <div
-      className="relative w-80 h-52 lg:w-96 lg:h-60 m-4 cursor-pointer overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="relative w-80 h-52 lg:w-96 lg:h-60 m-4 overflow-hidden"
+      onMouseEnter={() => !isPublic && setIsHovered(true)}
+      onMouseLeave={() => !isPublic && setIsHovered(false)}
+      style={{ cursor: isPublic ? 'pointer' : 'default' }}
     >
       <Image
-        src={isHovered ? gif : staticImage}
+        src={isPublic ? staticImage : (isHovered ? gif : staticImage)}
         alt={title}
         layout="fill"
         objectFit="cover"
         className="transition-opacity duration-300"
       />
-      <div
-        className={`absolute inset-0 transition-opacity duration-300 ${isHovered ? "opacity-30" : "opacity-100"
-          } bg-black bg-opacity-50 flex items-center justify-center`}
-      >
-        <Image
-          src={logo}
-          alt={title}
-          width={150}
-          height={150}
-          className="mb-7"
-        />
-      </div>
+      {!isPublic && (
+        <div
+          className={`absolute inset-0 transition-opacity duration-300 ${isHovered ? "opacity-30" : "opacity-100"
+            } bg-black bg-opacity-50 flex items-center justify-center`}
+        >
+          <Image
+            src={logo}
+            alt={title}
+            width={150}
+            height={150}
+            className="mb-7"
+          />
+        </div>
+      )}
       <h3 className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-gray-200 p-2 text-center">
         {title}
       </h3>
     </div>
   );
+
+  if (isPublic && url) {
+    return (
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        <CardContent />
+      </a>
+    );
+  }
+
+  return <CardContent />;
 };
 
 const Homepage = () => {
@@ -97,6 +112,19 @@ const Homepage = () => {
                   gif={projectGif}
                   staticImage={projectStatic}
                   logo={projectLogo}
+                  isPublic={false}
+                />
+                <ProjectCard
+                  title="moneyhunter.xyz"
+                  staticImage={moneyhunterImg}
+                  url="https://moneyhunter.xyz"
+                  isPublic={true}
+                />
+                <ProjectCard
+                  title="confidee.xyz"
+                  staticImage={confideeImg}
+                  url="https://confidee.xyz"
+                  isPublic={true}
                 />
               </div>
               <p className="mb-4 lg:mx-64 text-gray-400 font-montserrat text-center">
@@ -116,7 +144,7 @@ const Homepage = () => {
               </p>
               <div className="flex space-x-8">
                 <a
-                  href="https://instagram.com/fdaniall"
+                  href="https://instagram.com/your_username"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 text-gray-200 hover:text-gray-400 text-lg font-montserrat transition-colors duration-300"
@@ -125,7 +153,7 @@ const Homepage = () => {
                   <span>Instagram</span>
                 </a>
                 <a
-                  href="https://linkedin.com/in/fdaniall"
+                  href="https://linkedin.com/in/your_username"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 text-gray-200 hover:text-gray-400 text-lg font-montserrat transition-colors duration-300"
