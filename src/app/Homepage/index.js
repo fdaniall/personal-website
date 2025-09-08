@@ -9,7 +9,7 @@ import projectStatic from "../styles/images/firstyourinnovationgif.png";
 import projectLogo from "../styles/images/yourinnovation.png";
 import moneyhunterImg from "../styles/images/moneyhunter.png";
 import confideeImg from "../styles/images/confidee.png";
-import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa6";
+import { FaInstagram, FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa6";
 
 const ProjectCard = ({ title, gif, staticImage, logo, isPublic = false, url }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -142,36 +142,47 @@ const Homepage = () => {
               <p className="mb-8 text-xl text-gray-400 font-montserrat">
                 Let's connect and create something amazing!
               </p>
-              <div className="flex space-x-8">
-                <a
-                  href="https://linkedin.com/in/fdaniall"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-gray-200 hover:text-gray-400 text-lg font-montserrat transition-colors duration-300"
-                >
-                  <FaLinkedin size={24} />
-                  <span>LinkedIn</span>
-                </a>
-                <a
-                  href="https://github.com/fdaniall"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-gray-200 hover:text-gray-400 text-lg font-montserrat transition-colors duration-300"
-                >
-                  <FaGithub size={24} />
-                  <span>GitHub</span>
-                </a>
-                <a
-                  href="https://instagram.com/fdaniall"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-gray-200 hover:text-gray-400 text-lg font-montserrat transition-colors duration-300"
-                >
-                  <FaInstagram size={24} />
-                  <span>Instagram</span>
-                </a>
-              </div>
-            </section>
+              <div className="flex flex-col space-y-6">
+                <div className="flex space-x-8">
+                  <a
+                    href="https://linkedin.com/in/fdaniall"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-gray-200 hover:text-gray-400 text-lg font-montserrat transition-colors duration-300"
+                  >
+                    <FaLinkedin size={24} />
+                    <span>LinkedIn</span>
+                  </a>
+                  <a
+                    href="https://github.com/fdaniall"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-gray-200 hover:text-gray-400 text-lg font-montserrat transition-colors duration-300"
+                  >
+                    <FaGithub size={24} />
+                    <span>GitHub</span>
+                  </a>
+                </div>
+                <div className="flex space-x-8">
+                  <a
+                    href="mailto:fakhridanial29@gmail.com"
+                    className="flex items-center space-x-2 text-gray-200 hover:text-gray-400 text-lg font-montserrat transition-colors duration-300"
+                  >
+                    <FaEnvelope size={24} />
+                    <span>Email</span>
+                  </a>
+                  <a
+                    href="https://instagram.com/fdaniall"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-gray-200 hover:text-gray-400 text-lg font-montserrat transition-colors duration-300"
+                  >
+                    <FaInstagram size={24} />
+                    <span>Instagram</span>
+                  </a>
+                </div>
+              </div >
+            </section >
           </div >
         </div >
       </div >
