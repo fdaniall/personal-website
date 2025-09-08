@@ -7,6 +7,7 @@ import Image from "next/image";
 import projectGif from "../styles/gif/yourinnovation2.gif";
 import projectStatic from "../styles/images/firstyourinnovationgif.png";
 import projectLogo from "../styles/images/yourinnovation.png";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const ProjectCard = ({ title, gif, staticImage, logo }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -25,9 +26,8 @@ const ProjectCard = ({ title, gif, staticImage, logo }) => {
         className="transition-opacity duration-300"
       />
       <div
-        className={`absolute inset-0 transition-opacity duration-300 ${
-          isHovered ? "opacity-30" : "opacity-100"
-        } bg-black bg-opacity-50 flex items-center justify-center`}
+        className={`absolute inset-0 transition-opacity duration-300 ${isHovered ? "opacity-30" : "opacity-100"
+          } bg-black bg-opacity-50 flex items-center justify-center`}
       >
         <Image
           src={logo}
@@ -98,8 +98,6 @@ const Homepage = () => {
                   staticImage={projectStatic}
                   logo={projectLogo}
                 />
-                {/* Tambahkan ProjectCard lain di sini jika diperlukan */}
-                {/* test push aja inimah */}
               </div>
               <p className="mb-4 lg:mx-64 text-gray-400 font-montserrat text-center">
                 Projects shown are real but anonymized for privacy and
@@ -111,12 +109,35 @@ const Homepage = () => {
               className="min-h-screen p-8 flex flex-col items-center justify-center text-center"
             >
               <h1 className="text-5xl lg:text-7xl font-bold mb-4 text-gray-200">
-                Coming Soon
+                Contact
               </h1>
+              <p className="mb-8 text-xl text-gray-400 font-montserrat">
+                Let's connect and create something amazing!
+              </p>
+              <div className="flex space-x-8">
+                <a
+                  href="https://instagram.com/fdaniall"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-gray-200 hover:text-gray-400 text-lg font-montserrat transition-colors duration-300"
+                >
+                  <FaInstagram size={24} />
+                  <span>Instagram</span>
+                </a>
+                <a
+                  href="https://linkedin.com/in/fdaniall"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-gray-200 hover:text-gray-400 text-lg font-montserrat transition-colors duration-300"
+                >
+                  <FaLinkedin size={24} />
+                  <span>LinkedIn</span>
+                </a>
+              </div>
             </section>
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
     </>
   );
 };
