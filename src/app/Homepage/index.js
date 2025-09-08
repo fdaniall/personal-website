@@ -9,7 +9,7 @@ import projectStatic from "../styles/images/firstyourinnovationgif.png";
 import projectLogo from "../styles/images/yourinnovation.png";
 import moneyhunterImg from "../styles/images/moneyhunter.png";
 import confideeImg from "../styles/images/confidee.png";
-import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa6";
 
 const ProjectCard = ({ title, gif, staticImage, logo, isPublic = false, url }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -144,16 +144,7 @@ const Homepage = () => {
               </p>
               <div className="flex space-x-8">
                 <a
-                  href="https://instagram.com/your_username"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-gray-200 hover:text-gray-400 text-lg font-montserrat transition-colors duration-300"
-                >
-                  <FaInstagram size={24} />
-                  <span>Instagram</span>
-                </a>
-                <a
-                  href="https://linkedin.com/in/your_username"
+                  href="https://linkedin.com/in/fdaniall"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 text-gray-200 hover:text-gray-400 text-lg font-montserrat transition-colors duration-300"
@@ -161,9 +152,27 @@ const Homepage = () => {
                   <FaLinkedin size={24} />
                   <span>LinkedIn</span>
                 </a>
+                <a
+                  href="https://github.com/fdaniall"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-gray-200 hover:text-gray-400 text-lg font-montserrat transition-colors duration-300"
+                >
+                  <FaGithub size={24} />
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href="https://instagram.com/fdaniall"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-gray-200 hover:text-gray-400 text-lg font-montserrat transition-colors duration-300"
+                >
+                  <FaInstagram size={24} />
+                  <span>Instagram</span>
+                </a>
               </div>
             </section>
-          </div>
+          </div >
         </div >
       </div >
     </>
