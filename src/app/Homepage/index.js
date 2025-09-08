@@ -115,13 +115,13 @@ const Homepage = () => {
                   isPublic={false}
                 />
                 <ProjectCard
-                  title="moneyhunter.xyz"
+                  title="Money Hunter"
                   staticImage={moneyhunterImg}
                   url="https://moneyhunter.xyz"
                   isPublic={true}
                 />
                 <ProjectCard
-                  title="confidee.xyz"
+                  title="Confidee"
                   staticImage={confideeImg}
                   url="https://confidee.xyz"
                   isPublic={true}
