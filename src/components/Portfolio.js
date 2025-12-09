@@ -15,8 +15,17 @@ import confideeImg from "../app/styles/images/confidee.png";
 import rajawifiBg from "../app/styles/images/rajawifi_bg.png";
 import crmBg from "../app/styles/images/crm_bg.png";
 import imexsBg from "../app/styles/images/imexs_bg.png";
+import stakoBg from "../app/styles/images/stako.png";
 
 const projects = [
+    {
+        title: "Stako Protocol",
+        description: "Tokenized Stock Protocol on Lisk L2. Buy global stocks with IDRX stablecoin.",
+        staticImage: stakoBg,
+        url: "https://stako.vercel.app/",
+        isPublic: true,
+        tech: ["Next.js", "Lisk L2", "Blockchain", "Tailwind"]
+    },
     {
         title: "Confidee",
         description: "Web3 anonymous social platform. 10k+ users on Web2 version. Base L2 + AI powered.",

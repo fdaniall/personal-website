@@ -3,7 +3,7 @@
 import Section from "./ui/Section";
 import { Mail, Github, Linkedin, Instagram, ArrowUpRight } from "lucide-react";
 
-const SocialLink = ({ href, icon: Icon, label, username }) => (
+const SocialLink = ({ href, icon: Icon, label, username, hoverColor }) => (
     <a
         href={href}
         target="_blank"
@@ -11,7 +11,7 @@ const SocialLink = ({ href, icon: Icon, label, username }) => (
         className="group flex items-center justify-between p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300 w-full"
     >
         <div className="flex items-center gap-4">
-            <div className="p-3 bg-white/10 rounded-full group-hover:bg-accent group-hover:text-white transition-colors">
+            <div className={`p-3 bg-white/10 rounded-full group-hover:text-white transition-all duration-300 ${hoverColor}`}>
                 <Icon size={24} />
             </div>
             <div>
@@ -43,24 +43,28 @@ const Contact = () => {
                         icon={Mail}
                         label="Email"
                         username="fakhridanial29@gmail.com"
+                        hoverColor="group-hover:bg-[#EA4335]" // Official Gmail Red
                     />
                     <SocialLink
                         href="https://linkedin.com/in/fdaniall"
                         icon={Linkedin}
                         label="LinkedIn"
                         username="fdaniall"
+                        hoverColor="group-hover:bg-[#0077b5]" // Official LinkedIn Blue
                     />
                     <SocialLink
                         href="https://github.com/fdaniall"
                         icon={Github}
                         label="GitHub"
                         username="@fdaniall"
+                        hoverColor="group-hover:bg-[#24292e]" // Official GitHub Dark
                     />
                     <SocialLink
                         href="https://instagram.com/fdaniall"
                         icon={Instagram}
                         label="Instagram"
                         username="@fdaniall"
+                        hoverColor="group-hover:bg-gradient-to-br group-hover:from-[#833ab4] group-hover:via-[#fd1d1d] group-hover:to-[#fcb045]" // Official Instagram Gradient
                     />
                 </div>
 
