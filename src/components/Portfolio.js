@@ -86,7 +86,7 @@ const ProjectCard = ({ project }) => {
 
     return (
         <motion.div
-            className="group relative h-[400px] w-full bg-neutral-900 rounded-3xl overflow-hidden cursor-pointer border border-white/5"
+            className="group relative h-[350px] md:h-[400px] w-full bg-neutral-900 rounded-3xl overflow-hidden cursor-pointer border border-white/5"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             whileHover={{ y: -10 }}

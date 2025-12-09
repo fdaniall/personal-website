@@ -8,24 +8,24 @@ import { ArrowDown, Download } from "lucide-react";
 
 const Hero = () => {
     return (
-        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-bg">
+        <section className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-bg py-20 md:py-0">
             {/* Background Gradients */}
-            <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
-            <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+            <div className="absolute top-[-20%] left-[-10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-accent/20 rounded-full blur-[80px] md:blur-[120px] pointer-events-none mix-blend-screen" />
+            <div className="absolute bottom-[-20%] right-[-10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-purple-500/10 rounded-full blur-[80px] md:blur-[120px] pointer-events-none mix-blend-screen" />
 
-            <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+            <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-10">
 
                 {/* Text Content */}
-                <div className="flex-1 text-center md:text-left">
+                <div className="flex-1 text-center md:text-left pt-10 md:pt-0">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-secondary font-medium tracking-wide text-lg md:text-xl mb-4">
+                        <h2 className="text-secondary font-medium tracking-wide text-sm md:text-xl mb-4">
                             WELCOME TO MY WORLD
                         </h2>
-                        <h1 className="text-5xl md:text-7xl font-bold mb-6 font-calSans tracking-tight leading-tight">
+                        <h1 className="text-4xl md:text-7xl font-bold mb-6 font-calSans tracking-tight leading-tight">
                             Hi, I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Fakhri</span>
                         </h1>
                         <div className="text-2xl md:text-4xl text-gray-400 font-light h-[50px]">
@@ -99,7 +99,7 @@ const Hero = () => {
 
             {/* Scroll Indicator */}
             <motion.div
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gray-500"
+                className="absolute bottom-10 left-0 w-full flex justify-center text-gray-500"
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
             >

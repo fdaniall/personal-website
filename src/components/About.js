@@ -21,9 +21,9 @@ const TechBadge = ({ name }) => (
 
 const TimelineItem = ({ role, company, period, description }) => (
     <div className="relative pl-6 pb-8 border-l border-white/10 last:pb-0">
-        <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 bg-accent rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
-        <h4 className="text-white font-semibold text-lg">{role}</h4>
-        <div className="flex justify-between items-center mb-2">
+        <div className="absolute left-[-5px] top-1.5 w-2.5 h-2.5 bg-accent rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
+        <h4 className="text-white font-semibold text-lg leading-tight">{role}</h4>
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2 mt-1 gap-1">
             <span className="text-accent text-sm">{company}</span>
             <span className="text-gray-500 text-xs font-mono">{period}</span>
         </div>
@@ -51,12 +51,12 @@ const About = () => {
                             Currently exploring emerging technologies like <span className="text-accent">Web3</span> and Blockchain infrastructure to build decentralized future.
                         </p>
                         <div className="flex gap-4 mt-auto">
-                            <div className="flex flex-col">
+                            <div className="flex flex-col flex-1 text-center">
                                 <span className="text-3xl font-bold text-white">3.33</span>
                                 <span className="text-xs text-gray-500 uppercase tracking-wider">GPA</span>
                             </div>
                             <div className="w-[1px] h-full bg-white/10" />
-                            <div className="flex flex-col">
+                            <div className="flex flex-col flex-1 text-center">
                                 <span className="text-3xl font-bold text-white">4+</span>
                                 <span className="text-xs text-gray-500 uppercase tracking-wider">Years Exp</span>
                             </div>
