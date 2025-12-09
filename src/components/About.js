@@ -57,7 +57,7 @@ const About = () => {
                             </div>
                             <div className="w-[1px] h-full bg-white/10" />
                             <div className="flex flex-col flex-1 text-center">
-                                <span className="text-3xl font-bold text-white">4+</span>
+                                <span className="text-3xl font-bold text-white">2+</span>
                                 <span className="text-xs text-gray-500 uppercase tracking-wider">Years Exp</span>
                             </div>
                         </div>
