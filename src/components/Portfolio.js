@@ -17,14 +17,14 @@ import crmBg from "../app/styles/images/crm_bg.png";
 import imexsBg from "../app/styles/images/imexs_bg.png";
 import stakoBg from "../app/styles/images/stako.png";
 
-const projects = [
+const web3Projects = [
     {
         title: "Stako Protocol",
         description: "Tokenized Stock Protocol on Lisk L2. Buy global stocks with IDRX stablecoin.",
         staticImage: stakoBg,
         url: "https://stako.vercel.app/",
         isPublic: true,
-        tech: ["Next.js", "Lisk L2", "Blockchain", "Tailwind"]
+        tech: ["Next.js", "Lisk L2", "Blockchain", "Hackathon"]
     },
     {
         title: "Confidee",
@@ -33,11 +33,14 @@ const projects = [
         url: "https://confidee.xyz",
         isPublic: true,
         tech: ["Next.js", "Solidity", "Base L2", "AI"]
-    },
+    }
+];
+
+const otherProjects = [
     {
         title: "RajaWifi ISP",
         description: "Modular ISP Management with mobile app, admin dashboard, and payment gateway.",
-        staticImage: rajawifiBg, // Placeholder used as no specific image provided, user can update later
+        staticImage: rajawifiBg,
         url: "https://play.google.com/store/apps/details?id=com.rajawifi.app",
         isPublic: true,
         tech: ["Flutter", "Express.js", "MySQL", "React"]
@@ -45,7 +48,7 @@ const projects = [
     {
         title: "Travel CRM",
         description: "Comprehensive CRM for travel management, sales, and loyalty systems.",
-        staticImage: crmBg, // Placeholder
+        staticImage: crmBg,
         url: "#",
         isPublic: false,
         tech: ["Next.js", "TypeScript", "MySQL"]
@@ -53,7 +56,7 @@ const projects = [
     {
         title: "iMEXS",
         description: "Intelligent Manufacturing Execution System for real-time inventory monitoring.",
-        staticImage: imexsBg, // Placeholder
+        staticImage: imexsBg,
         url: "#",
         isPublic: false,
         tech: ["Django", "React", "PostgreSQL"]
@@ -128,7 +131,7 @@ const ProjectCard = ({ project }) => {
                 </div>
             </div>
 
-            {/* Private Project Logo Overlay (if applicable, from original code) */}
+            {/* Private Project Logo Overlay */}
             {!project.isPublic && project.logo && (
                 <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
                     <Image src={project.logo} width={100} height={100} alt="Logo" className="drop-shadow-lg" />
@@ -141,13 +144,22 @@ const ProjectCard = ({ project }) => {
 
 const Portfolio = () => {
     return (
-        <Section id="portfolio">
+        <Section id="portfolio" className="py-20">
             <div className="container mx-auto">
+                <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
+                    Web3 & <span className="text-gray-500">Blockchain</span>
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 max-w-5xl mx-auto">
+                    {web3Projects.map((project, index) => (
+                        <ProjectCard key={index} project={project} />
+                    ))}
+                </div>
+
                 <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
                     Selected <span className="text-gray-500">Works</span>
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project, index) => (
+                    {otherProjects.map((project, index) => (
                         <ProjectCard key={index} project={project} />
                     ))}
                 </div>

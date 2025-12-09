@@ -48,7 +48,7 @@ const About = () => {
                             A Computer Science graduate from <span className="text-white font-medium">Bina Nusantara University</span> with hands-on experience in full stack development.
                             I specialize in building scalable web and mobile applications, from planning to deployment.
                             <br /><br />
-                            Currently exploring emerging technologies like <span className="text-accent">Web3</span> and AI to create impactful solutions.
+                            Currently exploring emerging technologies like <span className="text-accent">Web3</span> and Blockchain infrastructure to build decentralized future.
                         </p>
                         <div className="flex gap-4 mt-auto">
                             <div className="flex flex-col">

@@ -32,7 +32,7 @@ const Hero = () => {
                             <span>I am a </span>
                             <span className="text-accent font-semibold">
                                 <Typewriter
-                                    words={['Full Stack Developer', 'Creative Thinker', 'Tech Enthusiast']}
+                                    words={['Full Stack Developer', 'Blockchain Explorer', 'Web3 Builder']}
                                     loop={0}
                                     cursor
                                     cursorStyle='_'
