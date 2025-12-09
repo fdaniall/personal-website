@@ -10,6 +10,15 @@ module.exports = {
       fontFamily: {
         calSans: ['CalSans', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif'],
+      },
+      colors: {
+        bg: "#0a0a0a",
+        primary: "#ffffff",
+        secondary: "#a1a1aa", // zinc-400
+        accent: "#3b82f6", // blue-500
+      },
+      animation: {
+        "spin-slow": "spin 10s linear infinite",
       }
     },
   },
