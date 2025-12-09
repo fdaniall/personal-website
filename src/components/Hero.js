@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import profile from "../app/styles/images/profile.jpg";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 
 const Hero = () => {
     return (
@@ -61,10 +61,12 @@ const Hero = () => {
                                 View Work
                             </a>
                             <a
-                                href="#contact"
-                                className="px-8 py-3 border border-gray-700 text-white font-semibold rounded-full hover:bg-white/5 transition-all"
+                                href="/Curriculum Vitae.pdf"
+                                download
+                                className="px-8 py-3 border border-gray-700 text-white font-semibold rounded-full hover:bg-white/5 transition-all flex items-center gap-2"
                             >
-                                Contact Me
+                                <Download size={18} />
+                                Resume
                             </a>
                         </motion.div>
                     </motion.div>
