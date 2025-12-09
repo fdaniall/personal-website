@@ -1,19 +1,34 @@
 "use client";
 
 import Section from "./ui/Section";
-import { Cpu, Globe, Rocket, Terminal } from "lucide-react";
+import { Cpu, Globe, Rocket, Terminal, BookOpen, Briefcase } from "lucide-react";
 
-const BentoCard = ({ children, className, title }) => (
-    <div className={`bg-white/5 border border-white/10 rounded-3xl p-6 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300 ${className}`}>
-        {title && <h3 className="text-gray-400 text-sm uppercase tracking-wider mb-4 font-semibold">{title}</h3>}
+const BentoCard = ({ children, className, title, icon: Icon }) => (
+    <div className={`bg-white/5 border border-white/10 rounded-3xl p-6 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300 flex flex-col ${className}`}>
+        <div className="flex items-center gap-3 mb-4">
+            {Icon && <Icon className="text-accent" size={20} />}
+            {title && <h3 className="text-gray-400 text-sm uppercase tracking-wider font-semibold">{title}</h3>}
+        </div>
         {children}
     </div>
 );
 
 const TechBadge = ({ name }) => (
-    <span className="px-3 py-1 bg-white/10 rounded-full text-sm text-gray-300 hover:bg-accent hover:text-white transition-colors cursor-default">
+    <span className="px-3 py-1 bg-white/10 rounded-full text-sm text-gray-300 hover:bg-accent hover:text-white transition-colors cursor-default border border-white/5">
         {name}
     </span>
+);
+
+const TimelineItem = ({ role, company, period, description }) => (
+    <div className="relative pl-6 pb-8 border-l border-white/10 last:pb-0">
+        <div className="absolute left-[-5px] top-0 w-2.5 h-2.5 bg-accent rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
+        <h4 className="text-white font-semibold text-lg">{role}</h4>
+        <div className="flex justify-between items-center mb-2">
+            <span className="text-accent text-sm">{company}</span>
+            <span className="text-gray-500 text-xs font-mono">{period}</span>
+        </div>
+        <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+    </div>
 );
 
 const About = () => {
@@ -25,50 +40,79 @@ const About = () => {
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]">
-                    {/* Bio - Large Block */}
-                    <BentoCard className="md:col-span-2 row-span-2 flex flex-col justify-center">
-                        <h3 className="text-2xl font-bold mb-4 text-white">Who I am</h3>
-                        <p className="text-gray-400 leading-relaxed text-lg">
-                            I'm Fakhri, a Full Stack Developer with a passion for building beautiful, functional, and scalable web applications.
-                            I love exploring new technologies, pushing creative limits, and leveraging AI to craft mind-blowing experiences.
+
+                    {/* Bio */}
+                    <BentoCard className="md:col-span-2 min-h-[300px]" icon={Terminal} title="Profile">
+                        <h3 className="text-2xl font-bold mb-4 text-white">Software Engineer & Innovator</h3>
+                        <p className="text-gray-400 leading-relaxed text-lg mb-6">
+                            A Computer Science graduate from <span className="text-white font-medium">Bina Nusantara University</span> with hands-on experience in full stack development.
+                            I specialize in building scalable web and mobile applications, from planning to deployment.
                             <br /><br />
-                            Always soaking up diverse perspectives and mentoring aspiring developers along the way.
+                            Currently exploring emerging technologies like <span className="text-accent">Web3</span> and AI to create impactful solutions.
                         </p>
+                        <div className="flex gap-4 mt-auto">
+                            <div className="flex flex-col">
+                                <span className="text-3xl font-bold text-white">3.33</span>
+                                <span className="text-xs text-gray-500 uppercase tracking-wider">GPA</span>
+                            </div>
+                            <div className="w-[1px] h-full bg-white/10" />
+                            <div className="flex flex-col">
+                                <span className="text-3xl font-bold text-white">4+</span>
+                                <span className="text-xs text-gray-500 uppercase tracking-wider">Years Exp</span>
+                            </div>
+                        </div>
                     </BentoCard>
 
                     {/* Tech Stack */}
-                    <BentoCard title="Tech Stack" className="md:col-span-1">
-                        <div className="flex flex-wrap gap-2">
-                            {['React', 'Next.js', 'Node.js', 'Tailwind', 'Python', 'TypeScript', 'MongoDB', 'Git'].map(tech => (
+                    <BentoCard title="Tech Stack" className="md:col-span-1" icon={Cpu}>
+                        <div className="flex flex-wrap gap-2 content-start">
+                            {[
+                                'React.js', 'Next.js', 'Flutter', 'Tailwind',
+                                'Express.js', 'Flask', 'Django',
+                                'Python', 'Java', 'JavaScript', 'Solidity',
+                                'MySQL', 'PostgreSQL', 'EVM'
+                            ].map(tech => (
                                 <TechBadge key={tech} name={tech} />
                             ))}
                         </div>
                     </BentoCard>
 
-                    {/* Philosophy / Approach */}
-                    <BentoCard title="My Approach" className="md:col-span-1 flex flex-col justify-between">
-                        <div className="flex items-center gap-4 text-gray-300 mb-2">
-                            <Rocket className="text-accent" />
-                            <span>Performance First</span>
-                        </div>
-                        <div className="flex items-center gap-4 text-gray-300 mb-2">
-                            <Cpu className="text-accent" />
-                            <span>Clean Architecture</span>
-                        </div>
-                        <div className="flex items-center gap-4 text-gray-300">
-                            <Globe className="text-accent" />
-                            <span>User Centric</span>
+                    {/* Education */}
+                    <BentoCard title="Education" className="md:col-span-1" icon={BookOpen}>
+                        <div className="mt-2">
+                            <h4 className="text-white font-semibold text-lg">Bachelor of Computer Science</h4>
+                            <p className="text-accent">Bina Nusantara University</p>
+                            <p className="text-gray-500 text-sm mt-1">Graduated Aug 2025</p>
+                            <p className="text-gray-400 text-sm mt-4">
+                                Final Project: Modular Mobile App for ISP Customer Management.
+                            </p>
                         </div>
                     </BentoCard>
 
-                    {/* Location / Status */}
-                    <BentoCard className="md:col-span-3 bg-gradient-to-r from-blue-900/20 to-purple-900/20 flex items-center justify-between">
-                        <div>
-                            <h3 className="text-xl font-bold text-white mb-1">Based in Indonesia 🇮🇩</h3>
-                            <p className="text-gray-400">Available for freelance & remote work</p>
+                    {/* Experience Timeline */}
+                    <BentoCard icon={Briefcase} title="Experience" className="md:col-span-2 row-span-2">
+                        <div className="mt-4">
+                            <TimelineItem
+                                role="Back-End Developer"
+                                company="PT Ciomas Adisatwa"
+                                period="Sep 2025 - Current"
+                                description="Maintaining internal operational systems from reporting, user management, to production workflows. Collaborating with cross-functional teams to refine backend architecture."
+                            />
+                            <TimelineItem
+                                role="Full Stack Developer - Intern"
+                                company="PT Japfa Comfeed Indonesia Tbk"
+                                period="Feb 2024 - Feb 2025"
+                                description="Contributed to Japfa Innovation platform and developed iMEXS (Intelligent Manufacturing Execution System) dashboard for inventory monitoring."
+                            />
                         </div>
-                        <Terminal className="text-gray-500 w-12 h-12 opacity-50" />
                     </BentoCard>
+
+                    {/* Location */}
+                    <BentoCard className="md:col-span-1 bg-gradient-to-br from-blue-900/20 to-purple-900/20" icon={Globe}>
+                        <h3 className="text-xl font-bold text-white mb-2">Jakarta, Indonesia 🇮🇩</h3>
+                        <p className="text-gray-400 text-sm">Open to relocation & remote work.</p>
+                    </BentoCard>
+
                 </div>
             </div>
         </Section>

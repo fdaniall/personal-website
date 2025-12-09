@@ -12,17 +12,42 @@ import projectStatic from "../app/styles/images/firstyourinnovationgif.png";
 import projectLogo from "../app/styles/images/yourinnovation.png";
 import moneyhunterImg from "../app/styles/images/moneyhunter.png";
 import confideeImg from "../app/styles/images/confidee.png";
+import rajawifiBg from "../app/styles/images/rajawifi_bg.png";
+import crmBg from "../app/styles/images/crm_bg.png";
+import imexsBg from "../app/styles/images/imexs_bg.png";
 
 const projects = [
     {
-        title: "Your Innovation",
-        description: "An innovative platform for creative solutions.",
-        staticImage: projectStatic,
-        gif: projectGif,
-        logo: projectLogo,
+        title: "Confidee",
+        description: "Web3 anonymous social platform. 10k+ users on Web2 version. Base L2 + AI powered.",
+        staticImage: confideeImg,
+        url: "https://confidee.xyz",
+        isPublic: true,
+        tech: ["Next.js", "Solidity", "Base L2", "AI"]
+    },
+    {
+        title: "RajaWifi ISP",
+        description: "Modular ISP Management with mobile app, admin dashboard, and payment gateway.",
+        staticImage: rajawifiBg, // Placeholder used as no specific image provided, user can update later
+        url: "https://play.google.com/store/apps/details?id=com.rajawifi.app",
+        isPublic: true,
+        tech: ["Flutter", "Express.js", "MySQL", "React"]
+    },
+    {
+        title: "Travel CRM",
+        description: "Comprehensive CRM for travel management, sales, and loyalty systems.",
+        staticImage: crmBg, // Placeholder
         url: "#",
-        isPublic: false, // As per original code
-        tech: ["Next.js", "React", "Unknown"]
+        isPublic: false,
+        tech: ["Next.js", "TypeScript", "MySQL"]
+    },
+    {
+        title: "iMEXS",
+        description: "Intelligent Manufacturing Execution System for real-time inventory monitoring.",
+        staticImage: imexsBg, // Placeholder
+        url: "#",
+        isPublic: false,
+        tech: ["Django", "React", "PostgreSQL"]
     },
     {
         title: "Money Hunter",
@@ -33,12 +58,14 @@ const projects = [
         tech: ["React", "Finance", "Web3"]
     },
     {
-        title: "Confidee",
-        description: "Confidential sharing platform.",
-        staticImage: confideeImg,
-        url: "https://confidee.xyz",
-        isPublic: true,
-        tech: ["Security", "Encryption", "Web app"]
+        title: "Your Innovation",
+        description: "Internal platform for showcasing corporate innovation ideas.",
+        staticImage: projectStatic,
+        gif: projectGif,
+        logo: projectLogo,
+        url: "#",
+        isPublic: false,
+        tech: ["Django", "Tailwind", "PostgreSQL"]
     }
 ];
 
@@ -56,7 +83,7 @@ const ProjectCard = ({ project }) => {
             {/* Image Background */}
             <div className="absolute inset-0">
                 <Image
-                    src={project.isPublic ? project.staticImage : (isHovered ? project.gif : project.staticImage)}
+                    src={project.isPublic ? project.staticImage : (isHovered && project.gif ? project.gif : project.staticImage)}
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40"
