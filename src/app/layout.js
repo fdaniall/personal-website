@@ -1,12 +1,15 @@
 import "./globals.css";
 
+export const viewport = {
+  themeColor: "#0a0a0a",
+};
+
 export const metadata = {
   title: "Fakhri Danial | Full Stack Developer",
   description: "Portfolio of Fakhri Danial, a Full Stack Developer specializing in Next.js, React, and Modern Web Technologies. Crafting premium digital experiences.",
   keywords: ["Fakhri Danial", "Full Stack Developer", "Next.js Developer", "React Developer", "Web Developer", "Indonesia", "Software Engineer"],
   authors: [{ name: "Fakhri Danial" }],
   creator: "Fakhri Danial",
-  themeColor: "#0a0a0a",
   openGraph: {
     title: "Fakhri Danial | Full Stack Developer",
     description: "Crafting premium digital experiences with code and creativity. Explore my portfolio.",
