@@ -16,8 +16,18 @@ import rajawifiBg from "../app/styles/images/rajawifi_bg.png";
 import crmBg from "../app/styles/images/crm_bg.png";
 import imexsBg from "../app/styles/images/imexs_bg.png";
 import stakoBg from "../app/styles/images/stako.png";
+import vultaraBg from "../app/styles/images/vultara.png";
 
 const web3Projects = [
+    {
+        title: "Vultara",
+        description: "3rd Winner @ Base Indonesia Hackathon 2025. A Smart Vault on Base that automatically generates Real Yield from ETH using Thetanuts Finance's covered call strategies.",
+        staticImage: vultaraBg,
+        url: "https://www.vultara.xyz/",
+        github: "https://github.com/vultara-labs",
+        isPublic: true,
+        tech: ["Base L2", "Thetanuts V4", "Solidity", "AI Assistant"]
+    },
     {
         title: "Stako Protocol",
         description: "Tokenized Stock Protocol on Lisk L2. Buy global stocks with IDRX stablecoin.",
@@ -122,9 +132,16 @@ const ProjectCard = ({ project }) => {
                 {/* Action Button */}
                 <div className="flex gap-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-200">
                     {project.isPublic ? (
-                        <a href={project.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-white font-medium hover:text-accent transition-colors">
-                            Visit Site <ExternalLink size={16} />
-                        </a>
+                        <>
+                            <a href={project.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-white font-medium hover:text-accent transition-colors">
+                                Visit Site <ExternalLink size={16} />
+                            </a>
+                            {project.github && (
+                                <a href={project.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-white font-medium hover:text-accent transition-colors">
+                                    GitHub <Github size={16} />
+                                </a>
+                            )}
+                        </>
                     ) : (
                         <span className="text-gray-500 text-sm flex items-center gap-2">Private Project</span>
                     )}
@@ -149,7 +166,7 @@ const Portfolio = () => {
                 <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
                     Web3 & <span className="text-gray-500">Blockchain</span>
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
                     {web3Projects.map((project, index) => (
                         <ProjectCard key={index} project={project} />
                     ))}
