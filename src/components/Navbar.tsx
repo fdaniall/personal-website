@@ -2,7 +2,8 @@
 
 
 import { useState, useEffect } from "react";
-import { useLenis } from "@studio-freight/react-lenis";
+
+import { useLenis } from "lenis/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import MagneticButton from "./ui/MagneticButton";
