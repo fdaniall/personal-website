@@ -26,7 +26,7 @@ const Hero = () => {
                             WELCOME TO MY WORLD
                         </h2>
                         <h1 className="text-4xl md:text-7xl font-bold mb-6 font-calSans tracking-tight leading-tight">
-                            Hi, I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Fakhri</span>
+                            Hi, I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Fakhri Danial</span>
                         </h1>
                         <div className="text-2xl md:text-4xl text-gray-400 font-light h-[50px]">
                             <span>I am a </span>
