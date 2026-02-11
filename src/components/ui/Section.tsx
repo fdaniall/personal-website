@@ -1,9 +1,18 @@
 "use client";
 
+
+import React from 'react';
 import { motion } from "framer-motion";
 import clsx from "clsx";
 
-const Section = ({ children, className, id, delay = 0 }) => {
+interface SectionProps {
+    children: React.ReactNode;
+    className?: string;
+    id?: string;
+    delay?: number;
+}
+
+const Section = ({ children, className, id, delay = 0 }: SectionProps) => {
     return (
         <motion.section
             id={id}

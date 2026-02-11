@@ -1,9 +1,19 @@
 "use client";
 
-import Section from "./ui/Section";
-import { Mail, Github, Linkedin, Instagram, ArrowUpRight } from "lucide-react";
 
-const SocialLink = ({ href, icon: Icon, label, username, hoverColor }) => (
+import React from 'react';
+import Section from "./ui/Section";
+import { Mail, Github, Linkedin, Instagram, ArrowUpRight, LucideIcon } from "lucide-react";
+
+interface SocialLinkProps {
+    href: string;
+    icon: LucideIcon;
+    label: string;
+    username: string;
+    hoverColor: string;
+}
+
+const SocialLink = ({ href, icon: Icon, label, username, hoverColor }: SocialLinkProps) => (
     <a
         href={href}
         target="_blank"

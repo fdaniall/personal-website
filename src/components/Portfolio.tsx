@@ -1,7 +1,8 @@
 "use client";
 
+
 import { useState } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import Section from "./ui/Section";
@@ -18,7 +19,19 @@ import imexsBg from "../app/styles/images/imexs_bg.png";
 import stakoBg from "../app/styles/images/stako.png";
 import vultaraBg from "../app/styles/images/vultara.png";
 
-const web3Projects = [
+interface Project {
+    title: string;
+    description: string;
+    staticImage: StaticImageData;
+    gif?: StaticImageData;
+    logo?: StaticImageData;
+    url: string;
+    github?: string;
+    isPublic: boolean;
+    tech: string[];
+}
+
+const web3Projects: Project[] = [
     {
         title: "Vultara",
         description: "3rd Winner @ Base Indonesia Hackathon 2025. A Smart Vault on Base that automatically generates Real Yield from ETH using Thetanuts Finance's covered call strategies.",
@@ -46,7 +59,7 @@ const web3Projects = [
     }
 ];
 
-const otherProjects = [
+const otherProjects: Project[] = [
     {
         title: "RajaWifi ISP",
         description: "Modular ISP Management with mobile app, admin dashboard, and payment gateway.",
@@ -91,7 +104,7 @@ const otherProjects = [
     }
 ];
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project }: { project: Project }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -159,27 +172,75 @@ const ProjectCard = ({ project }) => {
     );
 };
 
-const Portfolio = () => {
-    return (
-        <Section id="portfolio" className="py-20">
-            <div className="container mx-auto">
-                <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
-                    Web3 & <span className="text-gray-500">Blockchain</span>
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
-                    {web3Projects.map((project, index) => (
-                        <ProjectCard key={index} project={project} />
-                    ))}
-                </div>
 
-                <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
-                    Selected <span className="text-gray-500">Works</span>
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {otherProjects.map((project, index) => (
-                        <ProjectCard key={index} project={project} />
+const Portfolio = () => {
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 30 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+    };
+
+    return (
+        <Section id="portfolio" className="py-20 relative z-10">
+            <div className="container mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
+                        Web3 & <span className="text-gray-500">Blockchain</span>
+                    </h2>
+                </motion.div>
+
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-50px" }}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24"
+                >
+                    {web3Projects.map((project, index) => (
+                        <motion.div key={index} variants={itemVariants}>
+                            <ProjectCard project={project} />
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                    <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
+                        Selected <span className="text-gray-500">Works</span>
+                    </h2>
+                </motion.div>
+
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-50px" }}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                    {otherProjects.map((project, index) => (
+                        <motion.div key={index} variants={itemVariants}>
+                            <ProjectCard project={project} />
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
         </Section>
     );

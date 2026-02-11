@@ -10,8 +10,11 @@ const Hero = () => {
     return (
         <section className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-bg py-20 md:py-0">
             {/* Background Gradients */}
-            <div className="absolute top-[-20%] left-[-10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-accent/20 rounded-full blur-[80px] md:blur-[120px] pointer-events-none mix-blend-screen" />
-            <div className="absolute bottom-[-20%] right-[-10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-purple-500/10 rounded-full blur-[80px] md:blur-[120px] pointer-events-none mix-blend-screen" />
+
+
+            {/* Background Gradients */}
+            <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-accent/20 rounded-full blur-[100px] mix-blend-screen animate-blob" />
+            <div className="absolute top-[10%] right-[-10%] w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[100px] mix-blend-screen animate-blob [animation-delay:2000ms]" />
 
             <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-10">
 
