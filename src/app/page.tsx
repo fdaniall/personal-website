@@ -445,7 +445,8 @@ export default function Home() {
               actually solve a problem&rdquo; and &ldquo;can I ship it before
               the deadline kills me.&rdquo; So far that&apos;s meant
               building everything from Flutter mobile apps to Solidity
-              smart contracts.
+              smart contracts. I also like building systems around how I
+              work, not just what I work on. It compounds.
             </p>
 
             <p style={{ color: "var(--text-muted)" }}>
