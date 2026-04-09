@@ -8,12 +8,15 @@
   --text: #1a1a1a;
   --text-muted: #6b6b6b;
   --text-subtle: #9ca3af;
-  --border: #f3f4f6;
+  --border: #e5e7eb;
   --border-hover: #d1d5db;
   --highlight: #d1fae5;
   --tag-bg: #f3f4f6;
   --tag-text: #6b7280;
-  --dot-color: rgba(0, 0, 0, 0.15);
+  --card-bg: #ffffff;
+  --badge-bg: #d1fae5;
+  --badge-text: #065f46;
+  --dot-color: rgba(0, 0, 0, 0.12);
 }
 
 [data-theme="dark"] {
@@ -26,7 +29,10 @@
   --highlight: #064e3b;
   --tag-bg: #1f1f1f;
   --tag-text: #a3a3a3;
-  --dot-color: rgba(255, 255, 255, 0.1);
+  --card-bg: #111111;
+  --badge-bg: #064e3b;
+  --badge-text: #6ee7b7;
+  --dot-color: rgba(255, 255, 255, 0.08);
 }
 
 * {
@@ -211,4 +217,50 @@ a {
 
 .social-link:hover::after {
   width: 100%;
+}
+
+/* ── Featured project card ── */
+.featured-project {
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.featured-project:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .featured-project:hover {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.featured-project .arrow {
+  transform: translateX(-4px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.featured-project:hover .arrow {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* ── CTA link underline ── */
+.cta-link {
+  position: relative;
+}
+
+.cta-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-hover);
+  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-link:hover::after {
+  background-color: var(--text);
 }

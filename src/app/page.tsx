@@ -1,4 +1,4 @@
-import { ArrowUpRight, Download } from "lucide-react";
+import { ArrowUpRight, Download, Mail } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import EasterEgg from "@/components/EasterEgg";
 
@@ -14,15 +14,86 @@ const Highlight = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
+const FeaturedProject = ({
+  title,
+  description,
+  tech,
+  href,
+  badge,
+}: {
+  title: string;
+  description: string;
+  tech: string[];
+  href: string;
+  badge?: string;
+}) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="featured-project group block p-5 rounded-lg transition-all"
+    style={{
+      backgroundColor: "var(--card-bg)",
+      border: "1px solid var(--border)",
+    }}
+  >
+    <div className="flex items-start justify-between gap-4 mb-2">
+      <div className="flex items-center gap-3">
+        <span
+          className="text-base font-medium"
+          style={{ color: "var(--text)" }}
+        >
+          {title}
+        </span>
+        {badge && (
+          <span
+            className="font-mono text-[10px] px-2 py-0.5 rounded-full"
+            style={{
+              backgroundColor: "var(--badge-bg)",
+              color: "var(--badge-text)",
+            }}
+          >
+            {badge}
+          </span>
+        )}
+      </div>
+      <ArrowUpRight
+        size={16}
+        className="arrow flex-shrink-0 mt-1"
+        style={{ color: "var(--text-muted)" }}
+      />
+    </div>
+    <p className="text-sm leading-relaxed mb-3" style={{ color: "var(--text-muted)" }}>
+      {description}
+    </p>
+    <div className="flex flex-wrap gap-1.5">
+      {tech.map((t) => (
+        <span
+          key={t}
+          className="font-mono text-[10px] px-2 py-0.5 rounded-full"
+          style={{
+            backgroundColor: "var(--tag-bg)",
+            color: "var(--tag-text)",
+          }}
+        >
+          {t}
+        </span>
+      ))}
+    </div>
+  </a>
+);
+
 const ProjectLink = ({
   title,
   description,
   tech,
+  role,
   href,
 }: {
   title: string;
   description: string;
   tech: string[];
+  role?: string;
   href?: string;
 }) => {
   const isPublic = href && href !== "#";
@@ -34,7 +105,20 @@ const ProjectLink = ({
         style={{ borderBottom: "1px solid var(--border)" }}
       >
         <div className="flex items-center justify-between gap-4">
-          <span style={{ color: "var(--text-muted)" }}>{title}</span>
+          <div className="flex items-center gap-2.5">
+            <span style={{ color: "var(--text-muted)" }}>{title}</span>
+            {role && (
+              <span
+                className="font-mono text-[10px] px-2 py-0.5 rounded-full"
+                style={{
+                  backgroundColor: "var(--tag-bg)",
+                  color: "var(--tag-text)",
+                }}
+              >
+                {role}
+              </span>
+            )}
+          </div>
           <span
             className="font-mono text-[10px] uppercase tracking-wider"
             style={{ color: "var(--text-subtle)" }}
@@ -42,6 +126,12 @@ const ProjectLink = ({
             private
           </span>
         </div>
+        <p
+          className="text-sm pt-2"
+          style={{ color: "var(--text-muted)" }}
+        >
+          {description}
+        </p>
         <div className="flex flex-wrap gap-1.5 mt-2">
           {tech.map((t) => (
             <span
@@ -69,9 +159,22 @@ const ProjectLink = ({
       style={{ borderBottomColor: "var(--border)" }}
     >
       <div className="flex items-center justify-between gap-4">
-        <span className="font-medium" style={{ color: "var(--text)" }}>
-          {title}
-        </span>
+        <div className="flex items-center gap-2.5">
+          <span className="font-medium" style={{ color: "var(--text)" }}>
+            {title}
+          </span>
+          {role && (
+            <span
+              className="font-mono text-[10px] px-2 py-0.5 rounded-full"
+              style={{
+                backgroundColor: "var(--tag-bg)",
+                color: "var(--tag-text)",
+              }}
+            >
+              {role}
+            </span>
+          )}
+        </div>
         <ArrowUpRight
           size={16}
           className="arrow flex-shrink-0"
@@ -123,10 +226,10 @@ const StatusDot = () => (
 export default function Home() {
   return (
     <main className="min-h-screen max-w-5xl mx-auto px-6 py-16 md:py-24">
-      <div className="flex flex-col md:flex-row gap-16 md:gap-20">
+      <div className="flex flex-col md:flex-row gap-12 md:gap-16">
         {/* ── Left: Sidebar ── */}
         <aside className="md:w-64 md:flex-shrink-0 animate-fade-up">
-          <div className="md:sticky md:top-24 space-y-10">
+          <div className="md:sticky md:top-24 space-y-8">
             {/* Identity + Theme Toggle */}
             <div className="flex items-start justify-between">
               <div>
@@ -139,98 +242,23 @@ export default function Home() {
                 >
                   Software Engineer
                 </p>
+                <div className="flex items-center gap-2 mt-2">
+                  <StatusDot />
+                  <span
+                    className="text-sm"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    Jakarta, Indonesia
+                  </span>
+                </div>
               </div>
               <ThemeToggle />
-            </div>
-
-            {/* Status */}
-            <div className="space-y-3">
-              <div className="flex items-center gap-2">
-                <StatusDot />
-                <span
-                  className="text-sm"
-                  style={{ color: "var(--text-muted)" }}
-                >
-                  Back-End Dev @ Ciomas Adisatwa
-                </span>
-              </div>
-              <p
-                className="text-sm"
-                style={{ color: "var(--text-muted)" }}
-              >
-                Jakarta, Indonesia
-              </p>
-            </div>
-
-            {/* Now */}
-            <div>
-              <h2
-                className="font-mono text-[10px] uppercase tracking-wider mb-3"
-                style={{ color: "var(--text-muted)" }}
-              >
-                Now
-              </h2>
-              <ul className="space-y-2">
-                <li className="flex items-start gap-2 text-sm">
-                  <span aria-hidden="true" style={{ color: "var(--text-muted)" }}>&#8227;</span>
-                  <span style={{ color: "var(--text)" }}>
-                    Building Web3 products on Base L2
-                  </span>
-                </li>
-                <li className="flex items-start gap-2 text-sm">
-                  <span aria-hidden="true" style={{ color: "var(--text-muted)" }}>&#8227;</span>
-                  <span style={{ color: "var(--text)" }}>
-                    Growing Money Hunter community
-                  </span>
-                </li>
-                <li className="flex items-start gap-2 text-sm">
-                  <span aria-hidden="true" style={{ color: "var(--text-muted)" }}>&#8227;</span>
-                  <span style={{ color: "var(--text)" }}>
-                    Exploring AI &times; blockchain
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Tech */}
-            <div>
-              <h2
-                className="font-mono text-[10px] uppercase tracking-wider mb-3"
-                style={{ color: "var(--text-muted)" }}
-              >
-                Stack
-              </h2>
-              <div className="flex flex-wrap gap-1.5">
-                {[
-                  "React",
-                  "Next.js",
-                  "Express",
-                  "Django",
-                  "Flutter",
-                  "Solidity",
-                  "TypeScript",
-                  "Python",
-                  "PostgreSQL",
-                  "MySQL",
-                ].map((t) => (
-                  <span
-                    key={t}
-                    className="font-mono text-[11px] px-2.5 py-1 rounded-full"
-                    style={{
-                      backgroundColor: "var(--tag-bg)",
-                      color: "var(--tag-text)",
-                    }}
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
             </div>
 
             {/* Experience */}
             <div>
               <h2
-                className="font-mono text-[10px] uppercase tracking-wider mb-3"
+                className="font-mono text-[11px] uppercase tracking-wider mb-3"
                 style={{ color: "var(--text-muted)" }}
               >
                 Experience
@@ -270,7 +298,7 @@ export default function Home() {
             {/* Education */}
             <div>
               <h2
-                className="font-mono text-[10px] uppercase tracking-wider mb-3"
+                className="font-mono text-[11px] uppercase tracking-wider mb-3"
                 style={{ color: "var(--text-muted)" }}
               >
                 Education
@@ -287,6 +315,41 @@ export default function Home() {
               >
                 Bina Nusantara University &middot; 2025
               </p>
+            </div>
+
+            {/* Stack */}
+            <div>
+              <h2
+                className="font-mono text-[11px] uppercase tracking-wider mb-3"
+                style={{ color: "var(--text-muted)" }}
+              >
+                Stack
+              </h2>
+              <div className="flex flex-wrap gap-1.5">
+                {[
+                  "TypeScript",
+                  "Python",
+                  "Solidity",
+                  "React",
+                  "Next.js",
+                  "Express",
+                  "Django",
+                  "Flutter",
+                  "PostgreSQL",
+                  "MySQL",
+                ].map((t) => (
+                  <span
+                    key={t}
+                    className="font-mono text-[11px] px-2.5 py-1 rounded-full"
+                    style={{
+                      backgroundColor: "var(--tag-bg)",
+                      color: "var(--tag-text)",
+                    }}
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Links + Resume */}
@@ -330,104 +393,137 @@ export default function Home() {
         <div className="flex-1 min-w-0">
           {/* About */}
           <section
-            className="mb-20 space-y-5 leading-[1.8] animate-fade-up delay-1"
-            style={{ color: "var(--text-muted)" }}
+            className="mb-16 leading-[1.8] animate-fade-up delay-1"
+            style={{ color: "var(--text)" }}
           >
-            <p>
-              I&apos;m a software engineer who loves building things that
-              work well. With 2+ years of experience across full stack
-              development, I&apos;ve shipped products ranging from ISP
-              management platforms to manufacturing execution systems.
-            </p>
-
-            <p>
-              Currently exploring <Highlight>Web3</Highlight> and blockchain
-              — my project <Highlight>Vultara</Highlight>, a smart vault on
-              Base for automated ETH yield, won{" "}
-              <strong className="font-medium" style={{ color: "var(--text)" }}>
-                3rd Place at Base Indonesia Hackathon 2025
+            <p className="mb-5">
+              I build things that end up in people&apos;s hands &mdash; not
+              side projects that live in a GitHub graveyard. An ISP platform
+              processing real payments. A factory system tracking live
+              production lines. A{" "}
+              <Highlight>DeFi vault</Highlight> that won{" "}
+              <strong className="font-medium">
+                3rd at Base Indonesia Hackathon 2025
               </strong>
               .
             </p>
 
-            <p>
-              I care about building software that is{" "}
+            <p className="mb-5" style={{ color: "var(--text-muted)" }}>
+              Most of my work sits at the intersection of &ldquo;does this
+              actually solve a problem&rdquo; and &ldquo;can I ship it before
+              the deadline kills me.&rdquo; So far that&apos;s meant
+              building everything from Flutter mobile apps to Solidity
+              smart contracts.
+            </p>
+
+            <p style={{ color: "var(--text-muted)" }}>
+              Currently deep in Web3 &mdash; building on Base L2 and
+              co-running{" "}
               <strong className="font-medium" style={{ color: "var(--text)" }}>
-                well-crafted
+                Money Hunter
               </strong>
-              ,{" "}
-              <strong className="font-medium" style={{ color: "var(--text)" }}>
-                reliable
-              </strong>
-              , and{" "}
-              <strong className="font-medium" style={{ color: "var(--text)" }}>
-                actually useful
-              </strong>
-              . Here are some projects that reflect that:
+              , a 2,000+ member community around DeFi and trading.
             </p>
           </section>
 
-          {/* Web3 Projects */}
+          {/* Featured Projects */}
           <section className="mb-16 animate-fade-up delay-2">
             <h2
-              className="font-mono text-[10px] uppercase tracking-wider mb-6"
+              className="font-mono text-[11px] uppercase tracking-wider mb-6"
               style={{ color: "var(--text-muted)" }}
             >
-              Web3 & Blockchain
+              Featured
             </h2>
-            <div className="flex flex-col">
-              <ProjectLink
+            <div className="grid gap-3">
+              <FeaturedProject
                 title="Vultara"
-                description="Smart Vault on Base — automated ETH yield via Thetanuts covered calls. 3rd Place, Base Indonesia Hackathon 2025."
-                tech={["Base L2", "Solidity", "Thetanuts V4", "AI"]}
+                description="DeFi smart vault on Base L2. Automates ETH yield through Thetanuts covered call strategies. Users deposit ETH, the vault handles the rest."
+                tech={["Solidity", "Base L2", "Thetanuts V4", "AI"]}
+                badge="3rd Place — Base Hackathon 2025"
                 href="https://www.vultara.xyz/"
               />
-              <ProjectLink
-                title="Confidee"
-                description="Web3 anonymous social platform built on Base L2 with AI integration."
-                tech={["Next.js", "Solidity", "Base L2", "AI"]}
-                href="https://confidee.xyz"
+              <FeaturedProject
+                title="RajaWifi"
+                description="Full-stack ISP management platform. Flutter app for customers to buy packages and pay bills, React dashboard for admin operations, integrated payment gateway. Live on Play Store with real users."
+                tech={["Flutter", "React", "Express.js", "MySQL"]}
+                badge="Live Product"
+                href="https://play.google.com/store/apps/details?id=com.rajawifi.app"
               />
             </div>
           </section>
 
-          {/* Selected Works */}
-          <section className="mb-20 animate-fade-up delay-3">
+          {/* Other Projects */}
+          <section className="mb-16 animate-fade-up delay-3">
             <h2
-              className="font-mono text-[10px] uppercase tracking-wider mb-6"
+              className="font-mono text-[11px] uppercase tracking-wider mb-6"
               style={{ color: "var(--text-muted)" }}
             >
-              Selected Works
+              Other Projects
             </h2>
             <div className="flex flex-col">
               <ProjectLink
-                title="RajaWifi"
-                description="Modular ISP management — mobile app, admin dashboard, and payment gateway."
-                tech={["Flutter", "React", "Express.js", "MySQL"]}
-                href="https://play.google.com/store/apps/details?id=com.rajawifi.app"
+                title="Confidee"
+                description="Anonymous social platform on Base L2. Post and interact without revealing your identity, with AI-powered content moderation."
+                tech={["Next.js", "Solidity", "Base L2", "AI"]}
+                href="https://confidee.xyz"
               />
               <ProjectLink
                 title="Money Hunter"
-                description="Web3 and finance community. Co-founded and growing the ecosystem."
+                description="Web3 and finance community I co-founded. 2,000+ members sharing alpha on DeFi, trading, and blockchain opportunities."
                 tech={["Community", "Web3", "Finance"]}
+                role="Co-founder"
                 href="https://moneyhunter.xyz"
               />
               <ProjectLink
+                title="iMEXS"
+                description="Built and shipped a manufacturing execution system during my time at Japfa. Tracks real-time inventory across active production lines — used daily by the operations team on the factory floor."
+                tech={["Django", "React", "PostgreSQL"]}
+                role="Built at Japfa"
+              />
+              <ProjectLink
                 title="Travel CRM"
-                description="Comprehensive travel management, sales, and loyalty system."
+                description="End-to-end travel agency system — booking management, sales pipeline, customer loyalty tracking. Handles multi-branch operations."
                 tech={["Next.js", "TypeScript", "MySQL"]}
               />
               <ProjectLink
-                title="iMEXS"
-                description="Intelligent Manufacturing Execution System for real-time inventory monitoring."
-                tech={["Django", "React", "PostgreSQL"]}
-              />
-              <ProjectLink
                 title="Japfa Innovation"
-                description="Internal platform for showcasing corporate innovation ideas."
-                tech={["Django", "CSS", "PostgreSQL"]}
+                description="Designed and built an innovation platform adopted company-wide at Japfa (30,000+ employees). Handles the full lifecycle from idea submission to executive review and approval."
+                tech={["Django", "PostgreSQL"]}
+                role="Built at Japfa"
               />
             </div>
+          </section>
+
+          {/* CTA */}
+          <section
+            className="mb-16 animate-fade-up delay-4 p-6 md:p-8 rounded-lg"
+            style={{
+              backgroundColor: "var(--card-bg)",
+              border: "1px solid var(--border)",
+            }}
+          >
+            <h2
+              className="font-mono text-[11px] uppercase tracking-wider mb-3"
+              style={{ color: "var(--text-muted)" }}
+            >
+              Get in Touch
+            </h2>
+            <p
+              className="text-sm leading-relaxed mb-4"
+              style={{ color: "var(--text-muted)" }}
+            >
+              Building something interesting? Looking for someone who can
+              ship across the full stack? I&apos;m always open to
+              conversations about new projects and opportunities.
+            </p>
+            <a
+              href="mailto:fakhridanial29@gmail.com"
+              className="cta-link inline-flex items-center gap-2 text-sm font-medium transition-colors"
+              style={{ color: "var(--text)" }}
+            >
+              <Mail size={14} />
+              fakhridanial29@gmail.com
+            </a>
           </section>
 
           {/* Footer */}
@@ -436,7 +532,7 @@ export default function Home() {
             style={{ borderTop: "1px solid var(--border)" }}
           >
             <p
-              className="font-mono text-[10px] uppercase tracking-wider"
+              className="font-mono text-[11px] uppercase tracking-wider"
               style={{ color: "var(--text-subtle)" }}
             >
               &copy; {new Date().getFullYear()} Fakhri Danial
