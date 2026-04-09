@@ -81,11 +81,11 @@ const FeaturedProject = ({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-1.5 text-sm font-medium transition-colors hover:opacity-70"
+        className="inline-flex items-center gap-1.5 text-sm font-medium py-2 -my-2 transition-colors hover:opacity-70"
         style={{ color: "var(--text)" }}
       >
         {visitLabel || "Visit"}
-        <ArrowUpRight size={14} />
+        <ArrowUpRight size={14} aria-hidden="true" />
       </a>
       {links?.map((link) => (
         <a
@@ -93,11 +93,11 @@ const FeaturedProject = ({
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm transition-colors hover:opacity-70"
+          className="inline-flex items-center gap-1.5 text-sm py-2 -my-2 transition-colors hover:opacity-70"
           style={{ color: "var(--text-muted)" }}
         >
           {link.label}
-          <ArrowUpRight size={12} />
+          <ArrowUpRight size={12} aria-hidden="true" />
         </a>
       ))}
     </div>
@@ -200,6 +200,7 @@ const ProjectLink = ({
           size={16}
           className="arrow flex-shrink-0"
           style={{ color: "var(--text-muted)" }}
+          aria-hidden="true"
         />
       </div>
       <div className="project-desc">
@@ -230,7 +231,7 @@ const SocialLink = ({ label, href }: { label: string; href: string }) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="social-link font-medium text-sm"
+    className="social-link font-medium text-sm py-2 -my-2"
     style={{ color: "var(--text)" }}
   >
     {label}
@@ -244,18 +245,18 @@ const StatusDot = () => (
   </span>
 );
 
-const SectionLabel = ({ children }: { children: React.ReactNode }) => (
-  <h2
+const SectionLabel = ({ children, as: Tag = "h3" }: { children: React.ReactNode; as?: "h2" | "h3" }) => (
+  <Tag
     className="font-mono text-[11px] uppercase tracking-wider mb-3"
     style={{ color: "var(--text-muted)" }}
   >
     {children}
-  </h2>
+  </Tag>
 );
 
 const ExperienceBlock = () => (
   <div>
-    <SectionLabel>Experience</SectionLabel>
+    <SectionLabel as="h2">Experience</SectionLabel>
     <div className="space-y-3">
       <div>
         <p
@@ -291,7 +292,7 @@ const ExperienceBlock = () => (
 
 const EducationBlock = () => (
   <div>
-    <SectionLabel>Education</SectionLabel>
+    <SectionLabel as="h2">Education</SectionLabel>
     <p
       className="text-sm font-medium"
       style={{ color: "var(--text)" }}
@@ -322,7 +323,7 @@ const stackItems = [
 
 const StackBlock = () => (
   <div>
-    <SectionLabel>Stack</SectionLabel>
+    <SectionLabel as="h2">Stack</SectionLabel>
     <div className="flex flex-wrap gap-1.5">
       {stackItems.map((t) => (
         <span
@@ -342,6 +343,7 @@ const StackBlock = () => (
 
 export default function Home() {
   return (
+    <>
     <main className="min-h-screen max-w-5xl mx-auto px-6 py-12 md:py-24">
       <div className="flex flex-col md:flex-row gap-10 md:gap-16">
         {/* ── Left: Sidebar ── */}
@@ -350,11 +352,11 @@ export default function Home() {
             {/* Identity + Theme Toggle */}
             <div className="flex items-start justify-between">
               <div>
-                <h1 className="text-3xl md:text-3xl font-serif tracking-tight leading-tight mb-1">
+                <h1 className="text-3xl font-serif tracking-tight leading-tight mb-1">
                   <EasterEgg>Fakhri Danial</EasterEgg>
                 </h1>
                 <p
-                  className="text-base md:text-sm font-medium leading-relaxed"
+                  className="text-base font-medium leading-relaxed"
                   style={{ color: "var(--text-muted)" }}
                 >
                   Software Engineer
@@ -406,7 +408,7 @@ export default function Home() {
                 <a
                   href="/curriculum-vitae.pdf"
                   download
-                  className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-colors hover:opacity-80"
+                  className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2.5 rounded-full transition-colors hover:opacity-80"
                   style={{
                     backgroundColor: "var(--tag-bg)",
                     color: "var(--text)",
@@ -595,20 +597,20 @@ export default function Home() {
             </a>
           </section>
 
-          {/* Footer */}
-          <footer
-            className="pt-8 md:pt-10 animate-fade-up delay-4"
-            style={{ borderTop: "1px solid var(--border)" }}
-          >
-            <p
-              className="font-mono text-[11px] uppercase tracking-wider"
-              style={{ color: "var(--text-subtle)" }}
-            >
-              &copy; {new Date().getFullYear()} Fakhri Danial
-            </p>
-          </footer>
         </div>
       </div>
     </main>
+    <footer
+      className="max-w-5xl mx-auto px-6 pt-8 pb-12 md:pt-10 md:pb-16 animate-fade-up delay-4"
+      style={{ borderTop: "1px solid var(--border)" }}
+    >
+      <p
+        className="font-mono text-[11px] uppercase tracking-wider"
+        style={{ color: "var(--text-subtle)" }}
+      >
+        &copy; {new Date().getFullYear()} Fakhri Danial
+      </p>
+    </footer>
+    </>
   );
 }

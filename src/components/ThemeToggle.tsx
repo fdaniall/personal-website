@@ -37,7 +37,7 @@ export default function ThemeToggle() {
     <button
       onClick={toggle}
       aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-      className="w-11 h-11 flex items-center justify-center rounded-full transition-colors cursor-pointer hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
+      className="w-11 h-11 flex items-center justify-center rounded-full transition-colors cursor-pointer hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
       style={{
         backgroundColor: "var(--tag-bg)",
       }}
