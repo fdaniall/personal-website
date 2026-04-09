@@ -408,8 +408,8 @@ export default function Home() {
             style={{ color: "var(--text)" }}
           >
             <p className="mb-5">
-              I build things that end up in people&apos;s hands &mdash; not
-              side projects that live in a GitHub graveyard. An ISP platform
+              I build things that end up in people&apos;s hands, not
+              side projects that sit in a GitHub graveyard. An ISP platform
               processing real payments. A factory system tracking live
               production lines. A{" "}
               <Highlight>DeFi vault</Highlight> that won{" "}
@@ -428,7 +428,7 @@ export default function Home() {
             </p>
 
             <p style={{ color: "var(--text-muted)" }}>
-              Currently deep in Web3 &mdash; building on Base L2 and
+              Currently deep in Web3. Building on Base L2 and
               running{" "}
               <strong className="font-medium" style={{ color: "var(--text)" }}>
                 Money Hunter
@@ -450,7 +450,7 @@ export default function Home() {
                 title="Vultara"
                 description="DeFi smart vault on Base L2. Automates ETH yield through Thetanuts covered call strategies. Users deposit ETH, the vault handles the rest."
                 tech={["Solidity", "Base L2", "Thetanuts V4", "AI"]}
-                badge="3rd Place — Base Hackathon 2025"
+                badge="3rd Place, Base Hackathon 2025"
                 href="https://www.vultara.xyz/"
               />
               <FeaturedProject
@@ -487,13 +487,13 @@ export default function Home() {
               />
               <ProjectLink
                 title="iMEXS"
-                description="Built and shipped a manufacturing execution system during my time at Japfa. Tracks real-time inventory across active production lines — used daily by the operations team on the factory floor."
+                description="Built and shipped a manufacturing execution system during my time at Japfa. Tracks real-time inventory across active production lines, used daily by the operations team on the factory floor."
                 tech={["Django", "React", "PostgreSQL"]}
                 role="Built at Japfa"
               />
               <ProjectLink
                 title="Travel CRM"
-                description="End-to-end travel agency system — booking management, sales pipeline, customer loyalty tracking. Handles multi-branch operations."
+                description="End-to-end travel agency system. Booking management, sales pipeline, customer loyalty tracking across multiple branches."
                 tech={["Next.js", "TypeScript", "MySQL"]}
               />
               <ProjectLink
