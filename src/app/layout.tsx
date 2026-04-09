@@ -1,50 +1,38 @@
-
 import "./globals.css";
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import SmoothScroll from "@/components/SmoothScroll";
+import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
 
-const calsans = localFont({
-  src: "./styles/fonts/CalSans-SemiBold.ttf",
-  variable: "--font-calsans",
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
   display: "swap",
 });
 
-const montserrat = localFont({
-  src: "./styles/fonts/Montserrat-Regular.ttf",
-  variable: "--font-montserrat",
-  display: "swap",
-});
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+};
 
 export const metadata: Metadata = {
-  title: "Fakhri Danial | Full Stack Developer",
-  description: "Portfolio of Fakhri Danial, a Full Stack Developer specializing in Next.js, React, and Modern Web Technologies. Crafting premium digital experiences.",
-  keywords: ["Fakhri Danial", "Full Stack Developer", "Next.js Developer", "React Developer", "Web Developer", "Indonesia", "Software Engineer"],
+  title: "Fakhri Danial",
+  description:
+    "Software engineer based in Jakarta. Building scalable web applications and exploring Web3.",
+  keywords: [
+    "Fakhri Danial",
+    "Software Engineer",
+    "Full Stack Developer",
+    "Web3",
+    "Jakarta",
+  ],
   authors: [{ name: "Fakhri Danial" }],
   creator: "Fakhri Danial",
-  themeColor: "#0a0a0a",
   openGraph: {
-    title: "Fakhri Danial | Full Stack Developer",
-    description: "Crafting premium digital experiences with code and creativity. Explore my portfolio.",
+    title: "Fakhri Danial",
+    description:
+      "Software engineer based in Jakarta. Building scalable web applications and exploring Web3.",
     url: "https://fdaniall.dev",
-    siteName: "Fakhri Danial Portfolio",
+    siteName: "Fakhri Danial",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Fakhri Danial Portfolio",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Fakhri Danial | Full Stack Developer",
-    description: "Portfolio of Fakhri Danial, a Full Stack Developer specializing in Next.js, React, and Modern Web Technologies.",
-    creator: "@fdaniall",
-    images: ["/og-image.jpg"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -58,11 +46,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${calsans.variable} ${montserrat.variable} font-montserrat antialiased`}>
-        <div className="noise-overlay" />
-        <SmoothScroll>
-          {children as any}
-        </SmoothScroll>
+      <body className={`${inter.variable} font-sans antialiased`}>
+        {children}
       </body>
     </html>
   );
