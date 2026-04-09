@@ -31,14 +31,14 @@ const FeaturedProject = ({
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="featured-project group block p-5 rounded-lg transition-all"
+    className="featured-project group block p-4 md:p-5 rounded-lg transition-all"
     style={{
       backgroundColor: "var(--card-bg)",
       border: "1px solid var(--border)",
     }}
   >
-    <div className="flex items-start justify-between gap-4 mb-2">
-      <div className="flex items-center gap-3">
+    <div className="flex items-start justify-between gap-3 mb-2">
+      <div className="flex flex-wrap items-center gap-2 md:gap-3">
         <span
           className="text-base font-medium"
           style={{ color: "var(--text)" }}
@@ -47,7 +47,7 @@ const FeaturedProject = ({
         </span>
         {badge && (
           <span
-            className="font-mono text-[10px] px-2 py-0.5 rounded-full"
+            className="font-mono text-[10px] px-2 py-0.5 rounded-full whitespace-nowrap"
             style={{
               backgroundColor: "var(--badge-bg)",
               color: "var(--badge-text)",
@@ -105,7 +105,7 @@ const ProjectLink = ({
         style={{ borderBottom: "1px solid var(--border)" }}
       >
         <div className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5">
+          <div className="flex flex-wrap items-center gap-1.5 md:gap-2.5">
             <span style={{ color: "var(--text-muted)" }}>{title}</span>
             {role && (
               <span
@@ -120,7 +120,7 @@ const ProjectLink = ({
             )}
           </div>
           <span
-            className="font-mono text-[10px] uppercase tracking-wider"
+            className="font-mono text-[10px] uppercase tracking-wider flex-shrink-0"
             style={{ color: "var(--text-subtle)" }}
           >
             private
@@ -159,7 +159,7 @@ const ProjectLink = ({
       style={{ borderBottomColor: "var(--border)" }}
     >
       <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-1.5 md:gap-2.5">
           <span className="font-medium" style={{ color: "var(--text)" }}>
             {title}
           </span>
@@ -223,21 +223,117 @@ const StatusDot = () => (
   </span>
 );
 
+const SectionLabel = ({ children }: { children: React.ReactNode }) => (
+  <h2
+    className="font-mono text-[11px] uppercase tracking-wider mb-3"
+    style={{ color: "var(--text-muted)" }}
+  >
+    {children}
+  </h2>
+);
+
+const ExperienceBlock = () => (
+  <div>
+    <SectionLabel>Experience</SectionLabel>
+    <div className="space-y-3">
+      <div>
+        <p
+          className="text-sm font-medium"
+          style={{ color: "var(--text)" }}
+        >
+          Back-End Developer
+        </p>
+        <p
+          className="text-xs"
+          style={{ color: "var(--text-muted)" }}
+        >
+          PT Ciomas Adisatwa &middot; 2025 &ndash; Now
+        </p>
+      </div>
+      <div>
+        <p
+          className="text-sm font-medium"
+          style={{ color: "var(--text)" }}
+        >
+          Full Stack Developer
+        </p>
+        <p
+          className="text-xs"
+          style={{ color: "var(--text-muted)" }}
+        >
+          PT Japfa Comfeed &middot; 2024 &ndash; 2025
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
+const EducationBlock = () => (
+  <div>
+    <SectionLabel>Education</SectionLabel>
+    <p
+      className="text-sm font-medium"
+      style={{ color: "var(--text)" }}
+    >
+      B.Sc. Computer Science
+    </p>
+    <p
+      className="text-xs"
+      style={{ color: "var(--text-muted)" }}
+    >
+      Bina Nusantara University &middot; 2025
+    </p>
+  </div>
+);
+
+const stackItems = [
+  "TypeScript",
+  "Python",
+  "Solidity",
+  "React",
+  "Next.js",
+  "Express",
+  "Django",
+  "Flutter",
+  "PostgreSQL",
+  "MySQL",
+];
+
+const StackBlock = () => (
+  <div>
+    <SectionLabel>Stack</SectionLabel>
+    <div className="flex flex-wrap gap-1.5">
+      {stackItems.map((t) => (
+        <span
+          key={t}
+          className="font-mono text-[11px] px-2.5 py-1 rounded-full"
+          style={{
+            backgroundColor: "var(--tag-bg)",
+            color: "var(--tag-text)",
+          }}
+        >
+          {t}
+        </span>
+      ))}
+    </div>
+  </div>
+);
+
 export default function Home() {
   return (
-    <main className="min-h-screen max-w-5xl mx-auto px-6 py-16 md:py-24">
-      <div className="flex flex-col md:flex-row gap-12 md:gap-16">
+    <main className="min-h-screen max-w-5xl mx-auto px-6 py-12 md:py-24">
+      <div className="flex flex-col md:flex-row gap-10 md:gap-16">
         {/* ── Left: Sidebar ── */}
         <aside className="md:w-64 md:flex-shrink-0 animate-fade-up">
           <div className="md:sticky md:top-24 space-y-8">
             {/* Identity + Theme Toggle */}
             <div className="flex items-start justify-between">
               <div>
-                <h1 className="text-2xl md:text-3xl font-serif tracking-tight leading-tight mb-2">
+                <h1 className="text-3xl md:text-3xl font-serif tracking-tight leading-tight mb-1">
                   <EasterEgg>Fakhri Danial</EasterEgg>
                 </h1>
                 <p
-                  className="text-sm leading-relaxed"
+                  className="text-base md:text-sm font-medium leading-relaxed"
                   style={{ color: "var(--text-muted)" }}
                 >
                   Software Engineer
@@ -255,136 +351,51 @@ export default function Home() {
               <ThemeToggle />
             </div>
 
-            {/* Experience */}
-            <div>
-              <h2
-                className="font-mono text-[11px] uppercase tracking-wider mb-3"
-                style={{ color: "var(--text-muted)" }}
-              >
-                Experience
-              </h2>
-              <div className="space-y-3">
-                <div>
-                  <p
-                    className="text-sm font-medium"
-                    style={{ color: "var(--text)" }}
-                  >
-                    Back-End Developer
-                  </p>
-                  <p
-                    className="text-xs"
-                    style={{ color: "var(--text-muted)" }}
-                  >
-                    PT Ciomas Adisatwa &middot; 2025 &ndash; Now
-                  </p>
-                </div>
-                <div>
-                  <p
-                    className="text-sm font-medium"
-                    style={{ color: "var(--text)" }}
-                  >
-                    Full Stack Developer
-                  </p>
-                  <p
-                    className="text-xs"
-                    style={{ color: "var(--text-muted)" }}
-                  >
-                    PT Japfa Comfeed &middot; 2024 &ndash; 2025
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Education */}
-            <div>
-              <h2
-                className="font-mono text-[11px] uppercase tracking-wider mb-3"
-                style={{ color: "var(--text-muted)" }}
-              >
-                Education
-              </h2>
-              <p
-                className="text-sm font-medium"
-                style={{ color: "var(--text)" }}
-              >
-                B.Sc. Computer Science
-              </p>
-              <p
-                className="text-xs"
-                style={{ color: "var(--text-muted)" }}
-              >
-                Bina Nusantara University &middot; 2025
-              </p>
-            </div>
-
-            {/* Stack */}
-            <div>
-              <h2
-                className="font-mono text-[11px] uppercase tracking-wider mb-3"
-                style={{ color: "var(--text-muted)" }}
-              >
-                Stack
-              </h2>
-              <div className="flex flex-wrap gap-1.5">
-                {[
-                  "TypeScript",
-                  "Python",
-                  "Solidity",
-                  "React",
-                  "Next.js",
-                  "Express",
-                  "Django",
-                  "Flutter",
-                  "PostgreSQL",
-                  "MySQL",
-                ].map((t) => (
-                  <span
-                    key={t}
-                    className="font-mono text-[11px] px-2.5 py-1 rounded-full"
-                    style={{
-                      backgroundColor: "var(--tag-bg)",
-                      color: "var(--tag-text)",
-                    }}
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Links + Resume */}
-            <div className="space-y-4">
+            {/* Mobile: social links right after identity */}
+            <div
+              className="md:hidden pt-2 pb-2"
+            >
               <nav aria-label="Social links" className="flex flex-wrap gap-x-5 gap-y-2">
-                <SocialLink
-                  label="GitHub"
-                  href="https://github.com/fdaniall"
-                />
-                <SocialLink
-                  label="LinkedIn"
-                  href="https://linkedin.com/in/fdaniall"
-                />
-                <SocialLink
-                  label="Instagram"
-                  href="https://instagram.com/fdaniall"
-                />
-                <SocialLink
-                  label="Email"
-                  href="mailto:fakhridanial29@gmail.com"
-                />
+                <SocialLink label="GitHub" href="https://github.com/fdaniall" />
+                <SocialLink label="LinkedIn" href="https://linkedin.com/in/fdaniall" />
+                <SocialLink label="Email" href="mailto:fakhridanial29@gmail.com" />
               </nav>
-              <a
-                href="/curriculum-vitae.pdf"
-                download
-                className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-colors hover:opacity-80"
-                style={{
-                  backgroundColor: "var(--tag-bg)",
-                  color: "var(--text)",
-                  border: "1px solid var(--border)",
-                }}
-              >
-                <Download size={14} />
-                Download Resume
-              </a>
+            </div>
+
+            {/* Mobile: divider between identity and content */}
+            <div
+              className="md:hidden h-px"
+              style={{ backgroundColor: "var(--border)" }}
+            />
+
+            {/* Desktop: full sidebar */}
+            <div className="hidden md:flex md:flex-col md:gap-8">
+              <ExperienceBlock />
+              <EducationBlock />
+              <StackBlock />
+
+              {/* Links + Resume */}
+              <div className="space-y-4">
+                <nav aria-label="Social links" className="flex flex-wrap gap-x-5 gap-y-2">
+                  <SocialLink label="GitHub" href="https://github.com/fdaniall" />
+                  <SocialLink label="LinkedIn" href="https://linkedin.com/in/fdaniall" />
+                  <SocialLink label="Instagram" href="https://instagram.com/fdaniall" />
+                  <SocialLink label="Email" href="mailto:fakhridanial29@gmail.com" />
+                </nav>
+                <a
+                  href="/curriculum-vitae.pdf"
+                  download
+                  className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-colors hover:opacity-80"
+                  style={{
+                    backgroundColor: "var(--tag-bg)",
+                    color: "var(--text)",
+                    border: "1px solid var(--border)",
+                  }}
+                >
+                  <Download size={14} />
+                  Download Resume
+                </a>
+              </div>
             </div>
           </div>
         </aside>
@@ -393,7 +404,7 @@ export default function Home() {
         <div className="flex-1 min-w-0">
           {/* About */}
           <section
-            className="mb-16 leading-[1.8] animate-fade-up delay-1"
+            className="mb-14 md:mb-16 leading-[1.8] animate-fade-up delay-1"
             style={{ color: "var(--text)" }}
           >
             <p className="mb-5">
@@ -418,18 +429,18 @@ export default function Home() {
 
             <p style={{ color: "var(--text-muted)" }}>
               Currently deep in Web3 &mdash; building on Base L2 and
-              co-running{" "}
+              running{" "}
               <strong className="font-medium" style={{ color: "var(--text)" }}>
                 Money Hunter
               </strong>
-              , a 2,000+ member community around DeFi and trading.
+              , a 2,000+ member community I built around Web3 and finance.
             </p>
           </section>
 
           {/* Featured Projects */}
-          <section className="mb-16 animate-fade-up delay-2">
+          <section className="mb-14 md:mb-16 animate-fade-up delay-2">
             <h2
-              className="font-mono text-[11px] uppercase tracking-wider mb-6"
+              className="font-mono text-[11px] uppercase tracking-wider mb-5 md:mb-6"
               style={{ color: "var(--text-muted)" }}
             >
               Featured
@@ -453,9 +464,9 @@ export default function Home() {
           </section>
 
           {/* Other Projects */}
-          <section className="mb-16 animate-fade-up delay-3">
+          <section className="mb-14 md:mb-16 animate-fade-up delay-3">
             <h2
-              className="font-mono text-[11px] uppercase tracking-wider mb-6"
+              className="font-mono text-[11px] uppercase tracking-wider mb-5 md:mb-6"
               style={{ color: "var(--text-muted)" }}
             >
               Other Projects
@@ -494,9 +505,37 @@ export default function Home() {
             </div>
           </section>
 
+          {/* Mobile: Background details after projects */}
+          <section className="mb-14 md:hidden animate-fade-up delay-3">
+            <div
+              className="p-5 rounded-lg space-y-6"
+              style={{
+                backgroundColor: "var(--card-bg)",
+                border: "1px solid var(--border)",
+              }}
+            >
+              <ExperienceBlock />
+              <EducationBlock />
+              <StackBlock />
+              <a
+                href="/curriculum-vitae.pdf"
+                download
+                className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-colors hover:opacity-80"
+                style={{
+                  backgroundColor: "var(--tag-bg)",
+                  color: "var(--text)",
+                  border: "1px solid var(--border)",
+                }}
+              >
+                <Download size={14} />
+                Download Resume
+              </a>
+            </div>
+          </section>
+
           {/* CTA */}
           <section
-            className="mb-16 animate-fade-up delay-4 p-6 md:p-8 rounded-lg"
+            className="mb-14 md:mb-16 animate-fade-up delay-4 p-5 md:p-8 rounded-lg"
             style={{
               backgroundColor: "var(--card-bg)",
               border: "1px solid var(--border)",
@@ -528,7 +567,7 @@ export default function Home() {
 
           {/* Footer */}
           <footer
-            className="pt-10 animate-fade-up delay-4"
+            className="pt-8 md:pt-10 animate-fade-up delay-4"
             style={{ borderTop: "1px solid var(--border)" }}
           >
             <p
