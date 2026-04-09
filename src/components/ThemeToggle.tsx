@@ -31,13 +31,13 @@ export default function ThemeToggle() {
     localStorage.setItem("theme", next ? "dark" : "light");
   };
 
-  if (!mounted) return <div className="w-11 h-11" />;
+  if (!mounted) return <div className="w-11 h-11" aria-hidden="true" />;
 
   return (
     <button
       onClick={toggle}
       aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-      className="w-11 h-11 flex items-center justify-center rounded-full transition-colors cursor-pointer"
+      className="w-11 h-11 flex items-center justify-center rounded-full transition-colors cursor-pointer hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
       style={{
         backgroundColor: "var(--tag-bg)",
       }}

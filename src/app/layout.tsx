@@ -30,7 +30,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fdaniall.dev"),
-  title: "Fakhri Danial",
+  title: "Fakhri Danial — Software Engineer",
   description:
     "Software engineer based in Jakarta. Building scalable web applications and exploring Web3.",
   keywords: [
@@ -42,14 +42,23 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Fakhri Danial" }],
   creator: "Fakhri Danial",
+  alternates: {
+    canonical: "https://fdaniall.dev",
+  },
   openGraph: {
-    title: "Fakhri Danial",
+    title: "Fakhri Danial — Software Engineer",
     description:
       "Software engineer based in Jakarta. Building scalable web applications and exploring Web3.",
     url: "https://fdaniall.dev",
     siteName: "Fakhri Danial",
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Fakhri Danial — Software Engineer",
+    description:
+      "Software engineer based in Jakarta. Building scalable web applications and exploring Web3.",
   },
   icons: {
     icon: "/favicon.ico",

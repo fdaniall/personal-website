@@ -114,7 +114,7 @@ const SocialLink = ({ label, href }: { label: string; href: string }) => (
 );
 
 const StatusDot = () => (
-  <span className="relative flex h-2 w-2">
+  <span className="relative flex h-2 w-2" aria-hidden="true">
     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
   </span>
@@ -164,27 +164,27 @@ export default function Home() {
 
             {/* Now */}
             <div>
-              <h3
+              <h2
                 className="font-mono text-[10px] uppercase tracking-wider mb-3"
                 style={{ color: "var(--text-muted)" }}
               >
                 Now
-              </h3>
+              </h2>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm">
-                  <span style={{ color: "var(--text-muted)" }}>&#8227;</span>
+                  <span aria-hidden="true" style={{ color: "var(--text-muted)" }}>&#8227;</span>
                   <span style={{ color: "var(--text)" }}>
                     Building Web3 products on Base L2
                   </span>
                 </li>
                 <li className="flex items-start gap-2 text-sm">
-                  <span style={{ color: "var(--text-muted)" }}>&#8227;</span>
+                  <span aria-hidden="true" style={{ color: "var(--text-muted)" }}>&#8227;</span>
                   <span style={{ color: "var(--text)" }}>
                     Growing Money Hunter community
                   </span>
                 </li>
                 <li className="flex items-start gap-2 text-sm">
-                  <span style={{ color: "var(--text-muted)" }}>&#8227;</span>
+                  <span aria-hidden="true" style={{ color: "var(--text-muted)" }}>&#8227;</span>
                   <span style={{ color: "var(--text)" }}>
                     Exploring AI &times; blockchain
                   </span>
@@ -194,12 +194,12 @@ export default function Home() {
 
             {/* Tech */}
             <div>
-              <h3
+              <h2
                 className="font-mono text-[10px] uppercase tracking-wider mb-3"
                 style={{ color: "var(--text-muted)" }}
               >
                 Stack
-              </h3>
+              </h2>
               <div className="flex flex-wrap gap-1.5">
                 {[
                   "React",
@@ -229,12 +229,12 @@ export default function Home() {
 
             {/* Experience */}
             <div>
-              <h3
+              <h2
                 className="font-mono text-[10px] uppercase tracking-wider mb-3"
                 style={{ color: "var(--text-muted)" }}
               >
                 Experience
-              </h3>
+              </h2>
               <div className="space-y-3">
                 <div>
                   <p
@@ -269,12 +269,12 @@ export default function Home() {
 
             {/* Education */}
             <div>
-              <h3
+              <h2
                 className="font-mono text-[10px] uppercase tracking-wider mb-3"
                 style={{ color: "var(--text-muted)" }}
               >
                 Education
-              </h3>
+              </h2>
               <p
                 className="text-sm font-medium"
                 style={{ color: "var(--text)" }}
@@ -291,7 +291,7 @@ export default function Home() {
 
             {/* Links + Resume */}
             <div className="space-y-4">
-              <div className="flex flex-wrap gap-x-5 gap-y-2">
+              <nav aria-label="Social links" className="flex flex-wrap gap-x-5 gap-y-2">
                 <SocialLink
                   label="GitHub"
                   href="https://github.com/fdaniall"
@@ -308,11 +308,11 @@ export default function Home() {
                   label="Email"
                   href="mailto:fakhridanial29@gmail.com"
                 />
-              </div>
+              </nav>
               <a
-                href="/Curriculum Vitae.pdf"
+                href="/curriculum-vitae.pdf"
                 download
-                className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-colors hover:opacity-80"
                 style={{
                   backgroundColor: "var(--tag-bg)",
                   color: "var(--text)",
@@ -320,7 +320,7 @@ export default function Home() {
                 }}
               >
                 <Download size={14} />
-                Resume
+                Download Resume
               </a>
             </div>
           </div>

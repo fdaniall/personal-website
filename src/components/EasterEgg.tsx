@@ -55,7 +55,7 @@ export default function EasterEgg({
       tabIndex={0}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      className={`cursor-pointer select-none transition-all duration-500 outline-none ${
+      className={`cursor-pointer select-none transition-all duration-500 outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 rounded-sm ${
         activated ? "rainbow-shimmer" : "name-shimmer"
       }`}
     >
