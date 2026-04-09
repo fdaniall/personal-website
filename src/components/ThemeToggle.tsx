@@ -31,18 +31,18 @@ export default function ThemeToggle() {
     localStorage.setItem("theme", next ? "dark" : "light");
   };
 
-  if (!mounted) return <div className="w-8 h-8" />;
+  if (!mounted) return <div className="w-11 h-11" />;
 
   return (
     <button
       onClick={toggle}
-      aria-label="Toggle theme"
-      className="w-8 h-8 flex items-center justify-center rounded-full
-        bg-gray-100 dark:bg-white/10
-        hover:bg-gray-200 dark:hover:bg-white/20
-        transition-colors cursor-pointer"
+      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+      className="w-11 h-11 flex items-center justify-center rounded-full transition-colors cursor-pointer"
+      style={{
+        backgroundColor: "var(--tag-bg)",
+      }}
     >
-      {dark ? <Sun size={14} /> : <Moon size={14} />}
+      {dark ? <Sun size={16} /> : <Moon size={16} />}
     </button>
   );
 }

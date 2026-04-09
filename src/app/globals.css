@@ -5,14 +5,12 @@
 /* ── CSS Variables ── */
 :root {
   --bg: #fafafa;
-  --bg-secondary: #f3f4f6;
   --text: #1a1a1a;
   --text-muted: #8a8a8a;
   --text-subtle: #d1d5db;
   --border: #f3f4f6;
   --border-hover: #d1d5db;
   --highlight: #d1fae5;
-  --highlight-soft: rgba(209, 250, 229, 0.4);
   --tag-bg: #f3f4f6;
   --tag-text: #6b7280;
   --dot-color: rgba(0, 0, 0, 0.15);
@@ -20,14 +18,12 @@
 
 [data-theme="dark"] {
   --bg: #0a0a0a;
-  --bg-secondary: #171717;
   --text: #e5e5e5;
   --text-muted: #737373;
   --text-subtle: #404040;
   --border: #1f1f1f;
   --border-hover: #404040;
   --highlight: #064e3b;
-  --highlight-soft: rgba(6, 78, 59, 0.4);
   --tag-bg: #1f1f1f;
   --tag-text: #a3a3a3;
   --dot-color: rgba(255, 255, 255, 0.1);
@@ -47,10 +43,11 @@ body {
   background-color: var(--bg);
   background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
   background-size: 20px 20px;
+  background-attachment: fixed;
   color: var(--text);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 ::selection {
@@ -75,18 +72,35 @@ a {
   opacity: 1;
 }
 
-/* ── Project link hover → description reveals ── */
+/* ── Project link → description reveal (GPU-friendly) ── */
 .project-desc {
-  max-height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     opacity 0.3s ease;
 }
 
-.project-link:hover .project-desc {
-  max-height: 80px;
+.project-desc > * {
+  overflow: hidden;
+}
+
+.project-link:hover .project-desc,
+.project-link:focus-within .project-desc {
+  grid-template-rows: 1fr;
   opacity: 1;
+}
+
+/* Show descriptions by default on touch devices */
+@media (hover: none) {
+  .project-desc {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+  .project-link .arrow {
+    opacity: 0.4;
+    transform: translateX(0);
+  }
 }
 
 /* ── Signature name shimmer ── */
@@ -160,9 +174,22 @@ a {
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }
 .delay-4 { animation-delay: 0.4s; }
-.delay-5 { animation-delay: 0.5s; }
-.delay-6 { animation-delay: 0.6s; }
-.delay-7 { animation-delay: 0.7s; }
+
+/* ── Respect reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .name-shimmer,
+  .rainbow-shimmer {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
 
 /* ── Social link underline grow effect ── */
 .social-link {

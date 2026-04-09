@@ -22,10 +22,14 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://fdaniall.dev"),
   title: "Fakhri Danial",
   description:
     "Software engineer based in Jakarta. Building scalable web applications and exploring Web3.",
