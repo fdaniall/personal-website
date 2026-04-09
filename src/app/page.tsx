@@ -1,7 +1,15 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
+import EasterEgg from "@/components/EasterEgg";
 
 const Highlight = ({ children }: { children: React.ReactNode }) => (
-  <span className="bg-highlight/60 px-1.5 py-0.5 rounded-sm font-medium text-gray-900">
+  <span
+    className="px-1.5 py-0.5 rounded-sm font-medium"
+    style={{
+      backgroundColor: "var(--highlight)",
+      color: "var(--text)",
+    }}
+  >
     {children}
   </span>
 );
@@ -21,10 +29,16 @@ const ProjectLink = ({
 
   if (!isPublic) {
     return (
-      <div className="project-link py-4 border-b border-gray-100">
+      <div
+        className="project-link py-4"
+        style={{ borderBottom: "1px solid var(--border)" }}
+      >
         <div className="flex items-center justify-between gap-4">
-          <span className="text-gray-400">{title}</span>
-          <span className="font-mono text-[10px] text-gray-300 uppercase tracking-wider">
+          <span style={{ color: "var(--text-muted)" }}>{title}</span>
+          <span
+            className="font-mono text-[10px] uppercase tracking-wider"
+            style={{ color: "var(--text-subtle)" }}
+          >
             private
           </span>
         </div>
@@ -32,7 +46,11 @@ const ProjectLink = ({
           {tech.map((t) => (
             <span
               key={t}
-              className="font-mono text-[10px] text-gray-300 bg-gray-50 px-2 py-0.5 rounded-full"
+              className="font-mono text-[10px] px-2 py-0.5 rounded-full"
+              style={{
+                backgroundColor: "var(--tag-bg)",
+                color: "var(--text-subtle)",
+              }}
             >
               {t}
             </span>
@@ -47,20 +65,33 @@ const ProjectLink = ({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="project-link group block py-4 border-b border-gray-100 hover:border-gray-300 transition-colors"
+      className="project-link group block py-4 transition-colors border-b hover:border-b-[var(--border-hover)]"
+      style={{ borderBottomColor: "var(--border)" }}
     >
       <div className="flex items-center justify-between gap-4">
-        <span className="text-gray-900 font-medium">{title}</span>
-        <ArrowUpRight size={16} className="arrow text-muted flex-shrink-0" />
+        <span className="font-medium" style={{ color: "var(--text)" }}>
+          {title}
+        </span>
+        <ArrowUpRight
+          size={16}
+          className="arrow flex-shrink-0"
+          style={{ color: "var(--text-muted)" }}
+        />
       </div>
       <div className="project-desc">
-        <p className="text-sm text-muted pt-2">{description}</p>
+        <p className="text-sm pt-2" style={{ color: "var(--text-muted)" }}>
+          {description}
+        </p>
       </div>
       <div className="flex flex-wrap gap-1.5 mt-2">
         {tech.map((t) => (
           <span
             key={t}
-            className="font-mono text-[10px] text-gray-400 bg-gray-50 px-2 py-0.5 rounded-full group-hover:bg-highlight/40 group-hover:text-gray-600 transition-colors"
+            className="font-mono text-[10px] px-2 py-0.5 rounded-full transition-colors"
+            style={{
+              backgroundColor: "var(--tag-bg)",
+              color: "var(--tag-text)",
+            }}
           >
             {t}
           </span>
@@ -75,7 +106,8 @@ const SocialLink = ({ label, href }: { label: string; href: string }) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="social-link text-gray-900 font-medium text-sm"
+    className="social-link font-medium text-sm"
+    style={{ color: "var(--text)" }}
   >
     {label}
   </a>
@@ -95,30 +127,77 @@ export default function Home() {
         {/* ── Left: Sidebar ── */}
         <aside className="md:w-64 md:flex-shrink-0 animate-fade-up">
           <div className="md:sticky md:top-24 space-y-10">
-            {/* Identity */}
-            <div>
-              <h1 className="text-2xl md:text-3xl font-serif tracking-tight leading-tight mb-2">
-                <span className="name-shimmer">Fakhri Danial</span>
-              </h1>
-              <p className="text-sm text-muted leading-relaxed">
-                Software Engineer
-              </p>
+            {/* Identity + Theme Toggle */}
+            <div className="flex items-start justify-between">
+              <div>
+                <h1 className="text-2xl md:text-3xl font-serif tracking-tight leading-tight mb-2">
+                  <EasterEgg>Fakhri Danial</EasterEgg>
+                </h1>
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  Software Engineer
+                </p>
+              </div>
+              <ThemeToggle />
             </div>
 
             {/* Status */}
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <StatusDot />
-                <span className="text-sm text-gray-600">
+                <span
+                  className="text-sm"
+                  style={{ color: "var(--text-muted)" }}
+                >
                   Back-End Dev @ Ciomas Adisatwa
                 </span>
               </div>
-              <p className="text-sm text-muted">Jakarta, Indonesia</p>
+              <p
+                className="text-sm"
+                style={{ color: "var(--text-muted)" }}
+              >
+                Jakarta, Indonesia
+              </p>
+            </div>
+
+            {/* Now */}
+            <div>
+              <h3
+                className="font-mono text-[10px] uppercase tracking-wider mb-3"
+                style={{ color: "var(--text-muted)" }}
+              >
+                Now
+              </h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-sm">
+                  <span style={{ color: "var(--text-muted)" }}>&#8227;</span>
+                  <span style={{ color: "var(--text)" }}>
+                    Building Web3 products on Base L2
+                  </span>
+                </li>
+                <li className="flex items-start gap-2 text-sm">
+                  <span style={{ color: "var(--text-muted)" }}>&#8227;</span>
+                  <span style={{ color: "var(--text)" }}>
+                    Growing Money Hunter community
+                  </span>
+                </li>
+                <li className="flex items-start gap-2 text-sm">
+                  <span style={{ color: "var(--text-muted)" }}>&#8227;</span>
+                  <span style={{ color: "var(--text)" }}>
+                    Exploring AI &times; blockchain
+                  </span>
+                </li>
+              </ul>
             </div>
 
             {/* Tech */}
             <div>
-              <h3 className="font-mono text-[10px] text-muted uppercase tracking-wider mb-3">
+              <h3
+                className="font-mono text-[10px] uppercase tracking-wider mb-3"
+                style={{ color: "var(--text-muted)" }}
+              >
                 Stack
               </h3>
               <div className="flex flex-wrap gap-1.5">
@@ -136,7 +215,11 @@ export default function Home() {
                 ].map((t) => (
                   <span
                     key={t}
-                    className="font-mono text-[11px] text-gray-500 bg-gray-100 px-2.5 py-1 rounded-full"
+                    className="font-mono text-[11px] px-2.5 py-1 rounded-full"
+                    style={{
+                      backgroundColor: "var(--tag-bg)",
+                      color: "var(--tag-text)",
+                    }}
                   >
                     {t}
                   </span>
@@ -146,23 +229,38 @@ export default function Home() {
 
             {/* Experience */}
             <div>
-              <h3 className="font-mono text-[10px] text-muted uppercase tracking-wider mb-3">
+              <h3
+                className="font-mono text-[10px] uppercase tracking-wider mb-3"
+                style={{ color: "var(--text-muted)" }}
+              >
                 Experience
               </h3>
               <div className="space-y-3">
                 <div>
-                  <p className="text-sm text-gray-900 font-medium">
+                  <p
+                    className="text-sm font-medium"
+                    style={{ color: "var(--text)" }}
+                  >
                     Back-End Developer
                   </p>
-                  <p className="text-xs text-muted">
+                  <p
+                    className="text-xs"
+                    style={{ color: "var(--text-muted)" }}
+                  >
                     PT Ciomas Adisatwa &middot; 2025 &ndash; Now
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-900 font-medium">
+                  <p
+                    className="text-sm font-medium"
+                    style={{ color: "var(--text)" }}
+                  >
                     Full Stack Developer
                   </p>
-                  <p className="text-xs text-muted">
+                  <p
+                    className="text-xs"
+                    style={{ color: "var(--text-muted)" }}
+                  >
                     PT Japfa Comfeed &middot; 2024 &ndash; 2025
                   </p>
                 </div>
@@ -171,35 +269,59 @@ export default function Home() {
 
             {/* Education */}
             <div>
-              <h3 className="font-mono text-[10px] text-muted uppercase tracking-wider mb-3">
+              <h3
+                className="font-mono text-[10px] uppercase tracking-wider mb-3"
+                style={{ color: "var(--text-muted)" }}
+              >
                 Education
               </h3>
-              <p className="text-sm text-gray-900 font-medium">
+              <p
+                className="text-sm font-medium"
+                style={{ color: "var(--text)" }}
+              >
                 B.Sc. Computer Science
               </p>
-              <p className="text-xs text-muted">
+              <p
+                className="text-xs"
+                style={{ color: "var(--text-muted)" }}
+              >
                 Bina Nusantara University &middot; 2025
               </p>
             </div>
 
-            {/* Links */}
-            <div className="flex flex-wrap gap-x-5 gap-y-2">
-              <SocialLink
-                label="GitHub"
-                href="https://github.com/fdaniall"
-              />
-              <SocialLink
-                label="LinkedIn"
-                href="https://linkedin.com/in/fdaniall"
-              />
-              <SocialLink
-                label="Instagram"
-                href="https://instagram.com/fdaniall"
-              />
-              <SocialLink
-                label="Email"
-                href="mailto:fakhridanial29@gmail.com"
-              />
+            {/* Links + Resume */}
+            <div className="space-y-4">
+              <div className="flex flex-wrap gap-x-5 gap-y-2">
+                <SocialLink
+                  label="GitHub"
+                  href="https://github.com/fdaniall"
+                />
+                <SocialLink
+                  label="LinkedIn"
+                  href="https://linkedin.com/in/fdaniall"
+                />
+                <SocialLink
+                  label="Instagram"
+                  href="https://instagram.com/fdaniall"
+                />
+                <SocialLink
+                  label="Email"
+                  href="mailto:fakhridanial29@gmail.com"
+                />
+              </div>
+              <a
+                href="/Curriculum Vitae.pdf"
+                download
+                className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-colors"
+                style={{
+                  backgroundColor: "var(--tag-bg)",
+                  color: "var(--text)",
+                  border: "1px solid var(--border)",
+                }}
+              >
+                <Download size={14} />
+                Resume
+              </a>
             </div>
           </div>
         </aside>
@@ -207,7 +329,10 @@ export default function Home() {
         {/* ── Right: Content ── */}
         <div className="flex-1 min-w-0">
           {/* About */}
-          <section className="mb-20 space-y-5 text-gray-600 leading-[1.8] animate-fade-up delay-1">
+          <section
+            className="mb-20 space-y-5 leading-[1.8] animate-fade-up delay-1"
+            style={{ color: "var(--text-muted)" }}
+          >
             <p>
               I&apos;m a software engineer who loves building things that
               work well. With 2+ years of experience across full stack
@@ -219,7 +344,7 @@ export default function Home() {
               Currently exploring <Highlight>Web3</Highlight> and blockchain
               — my project <Highlight>Vultara</Highlight>, a smart vault on
               Base for automated ETH yield, won{" "}
-              <strong className="text-gray-900 font-medium">
+              <strong className="font-medium" style={{ color: "var(--text)" }}>
                 3rd Place at Base Indonesia Hackathon 2025
               </strong>
               .
@@ -227,13 +352,15 @@ export default function Home() {
 
             <p>
               I care about building software that is{" "}
-              <strong className="text-gray-900 font-medium">
+              <strong className="font-medium" style={{ color: "var(--text)" }}>
                 well-crafted
               </strong>
               ,{" "}
-              <strong className="text-gray-900 font-medium">reliable</strong>
+              <strong className="font-medium" style={{ color: "var(--text)" }}>
+                reliable
+              </strong>
               , and{" "}
-              <strong className="text-gray-900 font-medium">
+              <strong className="font-medium" style={{ color: "var(--text)" }}>
                 actually useful
               </strong>
               . Here are some projects that reflect that:
@@ -242,7 +369,10 @@ export default function Home() {
 
           {/* Web3 Projects */}
           <section className="mb-16 animate-fade-up delay-2">
-            <h2 className="font-mono text-[10px] text-muted uppercase tracking-wider mb-6">
+            <h2
+              className="font-mono text-[10px] uppercase tracking-wider mb-6"
+              style={{ color: "var(--text-muted)" }}
+            >
               Web3 & Blockchain
             </h2>
             <div className="flex flex-col">
@@ -263,7 +393,10 @@ export default function Home() {
 
           {/* Selected Works */}
           <section className="mb-20 animate-fade-up delay-3">
-            <h2 className="font-mono text-[10px] text-muted uppercase tracking-wider mb-6">
+            <h2
+              className="font-mono text-[10px] uppercase tracking-wider mb-6"
+              style={{ color: "var(--text-muted)" }}
+            >
               Selected Works
             </h2>
             <div className="flex flex-col">
@@ -298,8 +431,14 @@ export default function Home() {
           </section>
 
           {/* Footer */}
-          <footer className="pt-10 border-t border-gray-100 animate-fade-up delay-4">
-            <p className="font-mono text-[10px] text-gray-300 uppercase tracking-wider">
+          <footer
+            className="pt-10 animate-fade-up delay-4"
+            style={{ borderTop: "1px solid var(--border)" }}
+          >
+            <p
+              className="font-mono text-[10px] uppercase tracking-wider"
+              style={{ color: "var(--text-subtle)" }}
+            >
               &copy; {new Date().getFullYear()} Fakhri Danial
             </p>
           </footer>

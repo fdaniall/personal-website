@@ -2,21 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── CSS Variables ── */
+:root {
+  --bg: #fafafa;
+  --bg-secondary: #f3f4f6;
+  --text: #1a1a1a;
+  --text-muted: #8a8a8a;
+  --text-subtle: #d1d5db;
+  --border: #f3f4f6;
+  --border-hover: #d1d5db;
+  --highlight: #d1fae5;
+  --highlight-soft: rgba(209, 250, 229, 0.4);
+  --tag-bg: #f3f4f6;
+  --tag-text: #6b7280;
+  --dot-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] {
+  --bg: #0a0a0a;
+  --bg-secondary: #171717;
+  --text: #e5e5e5;
+  --text-muted: #737373;
+  --text-subtle: #404040;
+  --border: #1f1f1f;
+  --border-hover: #404040;
+  --highlight: #064e3b;
+  --highlight-soft: rgba(6, 78, 59, 0.4);
+  --tag-bg: #1f1f1f;
+  --tag-text: #a3a3a3;
+  --dot-color: rgba(255, 255, 255, 0.1);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: #fafafa;
-  color: #1a1a1a;
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: var(--text);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
-  background-color: #d1fae5;
+  background-color: var(--highlight);
 }
 
 /* ── Links ── */
@@ -64,17 +102,42 @@ a {
 .name-shimmer {
   background: linear-gradient(
     120deg,
-    #1a1a1a 0%,
-    #1a1a1a 40%,
+    var(--text) 0%,
+    var(--text) 40%,
     #6ee7b7 50%,
-    #1a1a1a 60%,
-    #1a1a1a 100%
+    var(--text) 60%,
+    var(--text) 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 6s ease-in-out infinite;
+}
+
+/* ── Easter egg rainbow shimmer ── */
+@keyframes rainbow {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.rainbow-shimmer {
+  background: linear-gradient(
+    120deg,
+    #f87171,
+    #fb923c,
+    #fbbf24,
+    #34d399,
+    #60a5fa,
+    #a78bfa,
+    #f472b6,
+    #f87171
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow 1s linear infinite;
 }
 
 /* ── Fade in on load ── */
@@ -113,7 +176,7 @@ a {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: #1a1a1a;
+  background-color: var(--text);
   transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
