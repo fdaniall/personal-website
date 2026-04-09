@@ -20,18 +20,17 @@ const FeaturedProject = ({
   tech,
   href,
   badge,
+  links,
 }: {
   title: string;
   description: string;
   tech: string[];
   href: string;
   badge?: string;
+  links?: { label: string; href: string }[];
 }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="featured-project group block p-4 md:p-5 rounded-lg transition-all"
+  <div
+    className="featured-project rounded-lg p-4 md:p-5 transition-all"
     style={{
       backgroundColor: "var(--card-bg)",
       border: "1px solid var(--border)",
@@ -57,16 +56,11 @@ const FeaturedProject = ({
           </span>
         )}
       </div>
-      <ArrowUpRight
-        size={16}
-        className="arrow flex-shrink-0 mt-1"
-        style={{ color: "var(--text-muted)" }}
-      />
     </div>
     <p className="text-sm leading-relaxed mb-3" style={{ color: "var(--text-muted)" }}>
       {description}
     </p>
-    <div className="flex flex-wrap gap-1.5">
+    <div className="flex flex-wrap gap-1.5 mb-3">
       {tech.map((t) => (
         <span
           key={t}
@@ -80,7 +74,32 @@ const FeaturedProject = ({
         </span>
       ))}
     </div>
-  </a>
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 text-sm font-medium transition-colors hover:opacity-70"
+        style={{ color: "var(--text)" }}
+      >
+        Visit
+        <ArrowUpRight size={14} />
+      </a>
+      {links?.map((link) => (
+        <a
+          key={link.label}
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-sm transition-colors hover:opacity-70"
+          style={{ color: "var(--text-muted)" }}
+        >
+          {link.label}
+          <ArrowUpRight size={12} />
+        </a>
+      ))}
+    </div>
+  </div>
 );
 
 const ProjectLink = ({
@@ -448,10 +467,14 @@ export default function Home() {
             <div className="grid gap-3">
               <FeaturedProject
                 title="Vultara"
-                description="DeFi smart vault on Base L2. Automates ETH yield through Thetanuts covered call strategies. Users deposit ETH, the vault handles the rest."
-                tech={["Solidity", "Base L2", "Thetanuts V4", "AI"]}
+                description="Solo-built DeFi smart vault on Base. Sustainable ETH yields through Thetanuts covered call strategies, with an AI advisor to guide users. Deposit ETH, the vault handles the rest."
+                tech={["Solidity", "Base L2", "Thetanuts V4", "Next.js", "AI"]}
                 badge="3rd Place, Base Hackathon 2025"
                 href="https://www.vultara.xyz/"
+                links={[
+                  { label: "Devfolio", href: "https://devfolio.co/projects/vultara-e808" },
+                  { label: "GitHub", href: "https://github.com/vultara-labs" },
+                ]}
               />
               <FeaturedProject
                 title="RajaWifi"
