@@ -21,6 +21,7 @@ const FeaturedProject = ({
   href,
   badge,
   links,
+  visitLabel,
 }: {
   title: string;
   description: string;
@@ -28,6 +29,7 @@ const FeaturedProject = ({
   href: string;
   badge?: string;
   links?: { label: string; href: string }[];
+  visitLabel?: string;
 }) => (
   <div
     className="featured-project rounded-lg p-4 md:p-5 transition-all"
@@ -82,7 +84,7 @@ const FeaturedProject = ({
         className="inline-flex items-center gap-1.5 text-sm font-medium transition-colors hover:opacity-70"
         style={{ color: "var(--text)" }}
       >
-        Visit
+        {visitLabel || "Visit"}
         <ArrowUpRight size={14} />
       </a>
       {links?.map((link) => (
@@ -478,10 +480,14 @@ export default function Home() {
               />
               <FeaturedProject
                 title="RajaWifi"
-                description="Full-stack ISP management platform. Flutter app for customers to buy packages and pay bills, React dashboard for admin operations, integrated payment gateway. Live on Play Store with real users."
+                description="Full-stack ISP management platform. Flutter app for customers to buy packages and pay bills, React dashboard for admin operations, integrated payment gateway. Live on both app stores with real users."
                 tech={["Flutter", "React", "Express.js", "MySQL"]}
                 badge="Live Product"
                 href="https://play.google.com/store/apps/details?id=com.rajawifi.app"
+                links={[
+                  { label: "App Store", href: "https://apps.apple.com/id/app/rajawifi/id6751738742" },
+                ]}
+                visitLabel="Play Store"
               />
             </div>
           </section>
